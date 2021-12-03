@@ -1,0 +1,10 @@
+{
+    "autoload": {
+        "classmap": ["system"],
+        "psr-0": {
+          "" : [
+              "system/"
+            ]
+        }
+    }
+}
