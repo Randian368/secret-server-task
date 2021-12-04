@@ -22,7 +22,7 @@ final class RouteBuilderTest extends TestCase {
 
     $route = $route_builder->build($path);
     $this->assertNotNull($route);
-    $this->assertInstanceOf($route, '\\Route');
+    $this->assertInstanceOf('\\Route', $route);
     $this->assertSame($route->getMethod(), 'createNewSecret');
     $this->assertSame($route->getArgument(), '');
 
@@ -31,7 +31,7 @@ final class RouteBuilderTest extends TestCase {
 
     $route = $route_builder->build($path);
     $this->assertNotNull($route);
-    $this->assertInstanceOf($route, '\\Route');
+    $this->assertInstanceOf('\\Route', $route);
     $this->assertSame($route->getMethod(), 'getSecretByHash');
     $this->assertSame($route->getArgument(), 'this_is_a_hash');
   }
