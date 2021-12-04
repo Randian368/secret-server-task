@@ -21,11 +21,11 @@ class Route {
     $this->method = $method;
   }
 
-  public function setArg($arg) {
+  public function setArgument($arg) {
     $this->arg = $arg;
   }
 
-  public function getArg() {
+  public function getArgument() {
     return $this->arg;
   }
 }

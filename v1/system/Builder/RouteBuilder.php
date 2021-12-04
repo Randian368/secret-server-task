@@ -59,28 +59,19 @@ class RouteBuilder {
         $method = '';
         $arg = '';
 
-        switch($this->request_method) {
-          case 'GET' :
-            $class_namespaces = array_map(function($namespace) {
-              return StringHelper::format_as_class_name($namespace);
-            }, array_slice($path_levels, 0, $i + 1));
+        $class_namespaces = array_map(function($namespace) {
+          return StringHelper::format_as_class_name($namespace);
+        }, array_slice($path_levels, 0, $i + 1));
 
-            $class_name = $type_prefix . implode('\\', $class_namespaces) . StringHelper::format_as_class_name(implode('/', array_slice($path_levels, $i + 1)));
+        $class_name = $type_prefix . implode('\\', $class_namespaces) . StringHelper::format_as_class_name(implode('/', array_slice($path_levels, $i + 1)));
 
-            if(!class_exists($class_name) && $i <= count($path_levels) - 1) {
-              $class_namespaces = array_slice($class_namespaces, 0, -1);
-              $class_name = $type_prefix . implode('\\', $class_namespaces) . StringHelper::format_as_class_name(implode('/', array_slice($path_levels_without_argument, $i + 1)));
+        if(!class_exists($class_name) && $i <= count($path_levels) - 1) {
+          $class_namespaces = array_slice($class_namespaces, 0, -1);
+          $class_name = $type_prefix . implode('\\', $class_namespaces) . StringHelper::format_as_class_name(implode('/', array_slice($path_levels_without_argument, $i + 1)));
 
-              if($this->isValidPath(str_replace($type_prefix, '', $class_name))) {
-                $arg = $path_levels[count($path_levels) - 1];
-              }
-            }
-            break;
-
-          case 'POST' :
-            $class_name = $type_prefix . implode('\\', array_slice($path_levels, 0, $i + 1)) . StringHelper::format_as_class_name(implode('/', array_slice($path_levels, $i + 1)));
-            echo $class_name . PHP_EOL;
-            break;
+          if($this->isValidPath(str_replace($type_prefix, '', $class_name))) {
+            $arg = $path_levels[count($path_levels) - 1];
+          }
         }
 
         $method = strval($path_levels[$i]);
@@ -94,7 +85,7 @@ class RouteBuilder {
 
           $route->setClass(new $class_name);
           $route->setMethod($method);
-          $route->setArg($arg);
+          $route->setArgument($arg);
 
           return $route;
         }
