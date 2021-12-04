@@ -1,5 +1,6 @@
 <?php
 namespace ResponseFormatter;
+use \Helper\StringHelper as StringHelper;
 
 class ResponseFormatterFactory {
 
@@ -61,20 +62,7 @@ class ResponseFormatterFactory {
   private function getFormatterClassName($subtype) {
     $formatter_class_name = '';
 
-    preg_match_all('/[^\p{L}]/', $subtype, $word_delimiters, PREG_OFFSET_CAPTURE);
-
-    if(!empty($word_delimiters[0])) {
-      for($i = 0; $i <= count($word_delimiters[0]); $i++) {
-        $delimiter = isset($word_delimiters[0][$i]) ? $word_delimiters[0][$i] : ['', strlen($subtype)];
-
-        $start = isset($word_delimiters[0][$i - 1]) ? ($word_delimiters[0][$i - 1][1] + 1) : 0;
-        $end = $delimiter[1] - $start;
-
-        $type_name .= ucfirst(substr($subtype, $start, $end));
-      }
-    } else {
-      $type_name = ucfirst($subtype);
-    }
+    $type_name = StringHelper::format_as_class_name($subtype);
 
     if($type_name) {
       $formatter_class_name = 'ResponseFormatter\\' . $type_name . 'ResponseFormatter';

@@ -7,7 +7,7 @@ final class ResponseFormatterFactoryTest extends TestCase {
     /**
    * @test
    */
-  public function getFormatterClassName(): void {
+  public function testGetFormatterClassName(): void {
     $reflection = new ReflectionClass(new ResponseFormatter\ResponseFormatterFactory());
 
     $reflection_method = $reflection->getMethod('getFormatterClassName');

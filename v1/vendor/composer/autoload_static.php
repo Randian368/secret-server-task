@@ -75,7 +75,10 @@ class ComposerStaticInitde77e2f9adae2e8eaad5c25ea67e7394
     );
 
     public static $classMap = array (
+        'Builder\\RouteBuilder' => __DIR__ . '/../..' . '/system/Builder/RouteBuilder.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Controller\\SecretServer' => __DIR__ . '/../..' . '/app/Controller/SecretServer.php',
+        'Helper\\StringHelper' => __DIR__ . '/../..' . '/system/Helper/StringHelper.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\ActualValueIsNotAnObjectException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/ActualValueIsNotAnObjectException.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',
@@ -497,6 +500,7 @@ class ComposerStaticInitde77e2f9adae2e8eaad5c25ea67e7394
         'ResponseFormatter\\ResponseFormatterFactory' => __DIR__ . '/../..' . '/system/Factory/ResponseFormatterFactory.php',
         'ResponseFormatter\\ResponseFormatterInterface' => __DIR__ . '/../..' . '/system/ResponseFormatter/ResponseFormatterInterface.php',
         'ResponseFormatter\\XmlResponseFormatter' => __DIR__ . '/../..' . '/system/ResponseFormatter/XmlResponseFormatter.php',
+        'Route' => __DIR__ . '/../..' . '/system/Route.php',
         'SebastianBergmann\\CliParser\\AmbiguousOptionException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/AmbiguousOptionException.php',
         'SebastianBergmann\\CliParser\\Exception' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/Exception.php',
         'SebastianBergmann\\CliParser\\OptionDoesNotAllowArgumentException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/OptionDoesNotAllowArgumentException.php',
