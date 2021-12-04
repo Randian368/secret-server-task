@@ -6,7 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Builder\\RouteBuilder' => $baseDir . '/system/Builder/RouteBuilder.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Controller\\SecretServer' => $baseDir . '/app/Controller/SecretServer.php',
+    'Helper\\StringHelper' => $baseDir . '/system/Helper/StringHelper.php',
     'PHPUnit\\Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
     'PHPUnit\\Framework\\ActualValueIsNotAnObjectException' => $vendorDir . '/phpunit/phpunit/src/Framework/Exception/ActualValueIsNotAnObjectException.php',
     'PHPUnit\\Framework\\Assert' => $vendorDir . '/phpunit/phpunit/src/Framework/Assert.php',
@@ -428,6 +431,7 @@ return array(
     'ResponseFormatter\\ResponseFormatterFactory' => $baseDir . '/system/Factory/ResponseFormatterFactory.php',
     'ResponseFormatter\\ResponseFormatterInterface' => $baseDir . '/system/ResponseFormatter/ResponseFormatterInterface.php',
     'ResponseFormatter\\XmlResponseFormatter' => $baseDir . '/system/ResponseFormatter/XmlResponseFormatter.php',
+    'Route' => $baseDir . '/system/Route.php',
     'SebastianBergmann\\CliParser\\AmbiguousOptionException' => $vendorDir . '/sebastian/cli-parser/src/exceptions/AmbiguousOptionException.php',
     'SebastianBergmann\\CliParser\\Exception' => $vendorDir . '/sebastian/cli-parser/src/exceptions/Exception.php',
     'SebastianBergmann\\CliParser\\OptionDoesNotAllowArgumentException' => $vendorDir . '/sebastian/cli-parser/src/exceptions/OptionDoesNotAllowArgumentException.php',
