@@ -5,21 +5,7 @@ use \Helper\StringHelper as StringHelper;
 
 
 class RouteBuilder {
-  private $request_method;
-
-  public function setRequestMethod(String $request_method) {
-    $this->request_method = $request_method;
-  }
-
-  public function getRequestMethod() {
-    return $this->request_method;
-  }
-
   public function build(String $path) {
-    if(empty($this->request_method)) {
-      $this->request_method = $_SERVER['REQUEST_METHOD'];
-    }
-
     if($predefined_route = $this->getPredefinedPath($path)) {
       $path = $predefined_route;
     }

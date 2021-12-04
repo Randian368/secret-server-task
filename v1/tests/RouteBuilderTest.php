@@ -9,17 +9,13 @@ final class RouteBuilderTest extends TestCase {
   * @test
   */
   public function testBuild(): void {
-    $path = 'security/encryption/hash_method/string_parameter'; // no such controller
+    $path = 'security/encryption/hash_method'; // no such controller
 
     $route_builder = new \Builder\RouteBuilder();
-    $route_builder->setRequestMethod('GET');
-
     $route = $route_builder->build($path);
     $this->assertSame($route, null);
 
     $path = 'secret';
-    $route_builder->setRequestMethod('POST');
-
     $route = $route_builder->build($path);
     $this->assertNotNull($route);
     $this->assertInstanceOf('\\Route', $route);
@@ -27,8 +23,6 @@ final class RouteBuilderTest extends TestCase {
     $this->assertSame($route->getArgument(), '');
 
     $path = 'secret/this_is_a_hash';
-    $route_builder->setRequestMethod('GET');
-
     $route = $route_builder->build($path);
     $this->assertNotNull($route);
     $this->assertInstanceOf('\\Route', $route);

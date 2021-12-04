@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteCond %{REQUEST_URI} (.+)\/v([0-9]+)\/(.*) [NC]
+RewriteCond %{REQUEST_URI} !index.php [NC]
+RewriteRule  ^.*$ %1/v%2/public/index.php?route=%3&%{QUERY_STRING}
