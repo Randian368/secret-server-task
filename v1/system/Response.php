@@ -2,7 +2,7 @@
 use \ResponseFormatter\ResponseFormatterFactory as ResponseFormatterFactory;
 
 class Response {
-  private $body;
+  public $body;
   private $http_status_code;
 
   public function setHttpStatusCode($http_status_code) {

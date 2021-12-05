@@ -1,8 +1,11 @@
 <?php
 require __DIR__.'/./startup.php';
 
-
 $request = new \Request();
+
+$response_formatter_factory = new \Factory\ResponseFormatterFactory();
+$response_formatter = $response_formatter_factory->createFormatter($request->getAcceptMimeType());
+
 
 /*
 * apache mod_rewrite modifies requests to the api version folders to be redirected to this file
@@ -14,6 +17,13 @@ if(isset($_GET['route']) && !empty($_GET['route'])) {
 
   $route_builder = new \Builder\RouteBuilder();
   $route = $route_builder->build($route_path);
-
-  $response = $request->getResponse($route);
+} else {
+  $route = new Route();
 }
+
+$response = $request->getResponse($route);
+
+$response_formatter->format($response);
+
+header('Content-type: ' . $request->getAcceptMimeType());
+print($response);

@@ -1,5 +1,6 @@
 <?php
 use \Factory\ResponseFormatterFactory;
+use \Response\ErrorResponse;
 
 class Request {
   private $http_method;

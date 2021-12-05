@@ -1,25 +1,27 @@
 <?php
+namespace Response;
 
-class ErrorResponse extends Response {
+class ErrorResponse extends \Response {
   private $errors = [
     [
       'code'        => 400,
       'inner_code'  => 400001,
       'name'        => 'Bad Request',
       'message'     => ''
+    ],
+    [
+      'code'        => 500,
+      'inner_code'  => 500001,
+      'name'        => 'Internal Error',
+      'message'     => 'The server cannot handle this request right now.'
     ]
-  ]
+  ];
 
-  public function construct($inner_code, $custom_addition => []) {
-    $error = $self->getErrorByInnerCode($inner_code);
+  public function __construct($inner_code, $custom_addition = []) {
+    $error = $this->getErrorByInnerCode($inner_code);
 
-    $error_response = new Response();
-    $response->setHTTPStatusCode($error['code']);
-
-    $body = array_merge($error, $custom_addition);
-    $response->setBody($body);
-
-    return $response;
+    $this->setHttpStatusCode($error['code']);
+    $this->setBody(array_merge($error, $custom_addition));
   }
 
 
