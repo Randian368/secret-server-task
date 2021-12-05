@@ -2,5 +2,7 @@
 namespace Base;
 
 interface ResponseFormatterInterface {
-  public function format($response);
+  public function format(&$response);
+
+  public function getFormatMimeType();
 }

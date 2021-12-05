@@ -3,18 +3,26 @@ namespace ResponseFormatter;
 use \Base\ResponseFormatterInterface;
 
 class XmlResponseFormatter implements ResponseFormatterInterface {
+  private $format_mime_type = 'application/xml';
+
+
+  public function getFormatMimeType() {
+    return $this->format_mime_type;
+  }
+
 
   public function format(&$response) {
     $response_array = json_decode(json_encode($response), JSON_OBJECT_AS_ARRAY);
     $response = $this->xml_encode($response_array);
   }
 
+
   /* source: https://www.darklaunch.com/php-xml-encode-using-domdocument-convert-array-to-xml-json-encode.html */
   private function xml_encode($mixed, $domElement=null, $DOMDocument=null) {
     if (is_null($DOMDocument)) {
-      $DOMDocument =new DOMDocument;
+      $DOMDocument = new \DOMDocument;
       $DOMDocument->formatOutput = true;
-      xml_encode($mixed, $DOMDocument, $DOMDocument);
+      $this->xml_encode($mixed, $DOMDocument, $DOMDocument);
 
       return $DOMDocument->saveXML();
     }
@@ -41,7 +49,7 @@ class XmlResponseFormatter implements ResponseFormatterInterface {
             }
           }
 
-          xml_encode($mixedElement, $node, $DOMDocument);
+          $this->xml_encode($mixedElement, $node, $DOMDocument);
         }
       }
       else {
