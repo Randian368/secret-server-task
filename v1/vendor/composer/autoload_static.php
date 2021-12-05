@@ -72,13 +72,22 @@ class ComposerStaticInitde77e2f9adae2e8eaad5c25ea67e7394
 
     public static $fallbackDirsPsr0 = array (
         0 => __DIR__ . '/../..' . '/system',
+        1 => __DIR__ . '/../..' . '/app/Controller',
+        2 => __DIR__ . '/../..' . '/app/Model',
     );
 
     public static $classMap = array (
+        'Base\\ApiControllerInterface' => __DIR__ . '/../..' . '/system/Base/ApiControllerInterface.php',
+        'Base\\ResponseFormatterInterface' => __DIR__ . '/../..' . '/system/Base/ResponseFormatterInterface.php',
         'Builder\\RouteBuilder' => __DIR__ . '/../..' . '/system/Builder/RouteBuilder.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Controller\\SecretServer' => __DIR__ . '/../..' . '/app/Controller/SecretServer.php',
+        'Db' => __DIR__ . '/../..' . '/system/Db.php',
+        'ErrorResponse' => __DIR__ . '/../..' . '/system/Response/ErrorResponse.php',
+        'Factory\\ResponseFormatterFactory' => __DIR__ . '/../..' . '/system/Factory/ResponseFormatterFactory.php',
         'Helper\\StringHelper' => __DIR__ . '/../..' . '/system/Helper/StringHelper.php',
+        'Model' => __DIR__ . '/../..' . '/system/Model.php',
+        'Model\\Secret' => __DIR__ . '/../..' . '/app/Model/Secret.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\ActualValueIsNotAnObjectException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/ActualValueIsNotAnObjectException.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',
@@ -495,10 +504,9 @@ class ComposerStaticInitde77e2f9adae2e8eaad5c25ea67e7394
         'PharIo\\Version\\VersionConstraintParser' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintParser.php',
         'PharIo\\Version\\VersionConstraintValue' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintValue.php',
         'PharIo\\Version\\VersionNumber' => __DIR__ . '/..' . '/phar-io/version/src/VersionNumber.php',
+        'Request' => __DIR__ . '/../..' . '/system/Request.php',
         'Response' => __DIR__ . '/../..' . '/system/Response.php',
         'ResponseFormatter\\JsonResponseFormatter' => __DIR__ . '/../..' . '/system/ResponseFormatter/JsonResponseFormatter.php',
-        'ResponseFormatter\\ResponseFormatterFactory' => __DIR__ . '/../..' . '/system/Factory/ResponseFormatterFactory.php',
-        'ResponseFormatter\\ResponseFormatterInterface' => __DIR__ . '/../..' . '/system/ResponseFormatter/ResponseFormatterInterface.php',
         'ResponseFormatter\\XmlResponseFormatter' => __DIR__ . '/../..' . '/system/ResponseFormatter/XmlResponseFormatter.php',
         'Route' => __DIR__ . '/../..' . '/system/Route.php',
         'SebastianBergmann\\CliParser\\AmbiguousOptionException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/AmbiguousOptionException.php',

@@ -2,7 +2,7 @@
     "autoload": {
       "classmap": ["system", "app/Controller", "app/Model"],
       "psr-0": {
-        "" : ["system/"]
+        "" : ["system/", "app/Controller", "app/Model"]
       }
     }
 }

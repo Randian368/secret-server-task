@@ -11,6 +11,6 @@ class Secret extends \Model{
   public function getByHash(String $hash) {
     if(!$this->db->isConnected()) $this->connect();
 
-    
+
   }
 }
