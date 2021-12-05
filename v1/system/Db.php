@@ -1,4 +1,5 @@
 <?php
+/* source: https://github.com/opencart/opencart */
 
 final class Db {
 	private $connection = null;

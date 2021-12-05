@@ -1,7 +1,8 @@
 <?php
 namespace ResponseFormatter;
 
-class XmlResponseFormatter implements ResponseFormatterInterface {
+class XmlResponseFormatter implements Interface\ResponseFormatterInterface {
+  
   public function format($response) {
     $response_array = json_decode(json_encode($response), JSON_OBJECT_AS_ARRAY);
     return $this->xml_encode($response_array);
@@ -13,6 +14,7 @@ class XmlResponseFormatter implements ResponseFormatterInterface {
       $DOMDocument =new DOMDocument;
       $DOMDocument->formatOutput = true;
       xml_encode($mixed, $DOMDocument, $DOMDocument);
+
       return $DOMDocument->saveXML();
     }
     else {

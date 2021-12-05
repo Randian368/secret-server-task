@@ -1,7 +1,7 @@
 <?php
 $predefined_paths = [
-  'secret' => 'SecretServer/createNewSecret',
-  'secret\/([^\s\/]+)' => 'SecretServer/getSecretByHash/$1'
+  'secret'              => 'SecretServer/post',
+  'secret\/([^\s\/]+)'  => 'SecretServer/get/$1'
 ];
 
 define('PREDEFINED_PATHS', $predefined_paths);
