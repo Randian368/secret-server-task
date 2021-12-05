@@ -65,7 +65,7 @@ final class RequestTest extends TestCase {
 
 
   public function testGetResponse() {
-    $route = new Route();
+    $route = new \Route();
 
   }
 

@@ -1,28 +1,42 @@
 <?php
+use \Factory\ResponseFormatterFactory;
 
 class Request {
   private $http_method;
   private $accept_mime_type;
   private $http_headers;
 
+
   public function __construnct() {
-    $this->http_headers = apache_request_headers();
-    $this->accept_mime_type = $this->getAcceptMimeType();
-    $this->http_method = $this->getHttpMethod();
+    $this->http_headers       = apache_request_headers();
+    $this->accept_mime_type   = $this->getAcceptMimeType();
+    $this->http_method        = $this->getHttpMethod();
   }
 
 
-  public function setHttpMethod($http_method) {
-    $this->http_method = $http_method;
-  }
-
-
-  public function getHttpMethod() {
-    if(empty($this->http_method)) {
-      $this->setHttpMethod($_SERVER['REQUEST_METHOD']);
+  public function getResponse(Route $route) {
+    if($this->isValidRequestRoute($route)) {
+      $response = $route->visit();
+    } else {
+      $response = new \Response\ErrorResponse('400001');
     }
 
-    return $this->http_method;
+    if(!($response instanceof \Response)) {
+      $response = new \Response\ErrorResponse('500001');
+    }
+    return $response;
+  }
+
+
+  public function isValidRequestRoute(Route $route) {
+    if($route->hasClassInstance() && $route->hasMethod()) {
+      if($route->getClass() instanceof \Base\ApiControllerInterface) {
+        if(method_exists('\Base\ApiControllerInterface', $route->getMethod())) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
 
@@ -53,6 +67,24 @@ class Request {
   }
 
 
+  public function isSupportedProtocol() {
+    return (bool)(strpos($this->getProtocol(), 'HTTP') !== false);
+  }
+
+
+  public function setHttpMethod($http_method) {
+    $this->http_method = $http_method;
+  }
+
+
+  public function getHttpMethod() {
+    if(empty($this->http_method)) {
+      $this->setHttpMethod($_SERVER['REQUEST_METHOD']);
+    }
+    return $this->http_method;
+  }
+
+
   public function setHttpHeaders($http_headers) {
     $this->http_headers = $http_headers;
   }
@@ -78,33 +110,5 @@ class Request {
 
     return $this->protocol;
   }
-
-
-  public function isSupportedProtocol() {
-    return (bool)(strpos($this->getProtocol(), 'HTTP') !== false);
-  }
-
-
-  public function getResponse(Route $route) {
-    if($this->isValidRequestRoute($route)) {
-      $response = $route->visit();
-    }
-  }
-
-
-  public function isValidRequestRoute(Route $route) {
-    if($route->hasClassInstance() && $route->hasMethod()) {
-      if($route->getClass() instanceof \Base\ApiControllerInterface) {
-        if(method_exists('\Base\ApiControllerInterface', $route->getMethod())) {
-          return true;
-        }
-      }
-    }
-
-    return false;
-  }
-
-
-
 
 }

@@ -4,9 +4,9 @@ use \Base\ResponseFormatterInterface;
 
 class XmlResponseFormatter implements ResponseFormatterInterface {
 
-  public function format($response) {
+  public function format(&$response) {
     $response_array = json_decode(json_encode($response), JSON_OBJECT_AS_ARRAY);
-    return $this->xml_encode($response_array);
+    $response = $this->xml_encode($response_array);
   }
 
   /* source: https://www.darklaunch.com/php-xml-encode-using-domdocument-convert-array-to-xml-json-encode.html */

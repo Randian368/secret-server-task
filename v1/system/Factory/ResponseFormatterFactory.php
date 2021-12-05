@@ -23,7 +23,7 @@ class ResponseFormatterFactory {
       }
     }
 
-    throw new \Exception('The requested response format is not supported!');
+    return $this->getFormatterClassInstance('application/json'); // fallback to json if the Accept HTTP heder didn't contain any supported mime types
   }
 
 
