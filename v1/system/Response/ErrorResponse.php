@@ -10,18 +10,23 @@ class ErrorResponse extends Response {
     ]
   ]
 
-  public function getErrorResponse($inner_code) {
-    $error = $this->getErrorByInnerCode($inner_code);
+  public function construct($inner_code, $custom_addition => []) {
+    $error = $self->getErrorByInnerCode($inner_code);
 
     $error_response = new Response();
     $response->setHTTPStatusCode($error['code']);
 
-    $formatter = new ResponseFormatter()
-    $response->setBody($formatted_error_body);
+    $body = array_merge($error, $custom_addition);
+    $response->setBody($body);
+
+    return $response;
   }
 
 
-  public function
+  protected function getErrorByInnerCode($inner_code) {
+    return $this->errors[array_search($inner_code, array_column($this->errors, 'inner_code'))];
+  }
+
 
 
 
