@@ -4,44 +4,31 @@ use \Helper\StringHelper as StringHelper;
 
 class ResponseFormatterFactory {
 
-  public function createFormatter() {
-    $mime_type = '';
-    $request_headers = apache_request_headers();
-
-    if(isset($request_headers['Accept']) && !empty($request_headers['Accept'])) {
-      if($request_headers['Accept'] == '*/*') {
-        $mime_type = 'application/json';
-      } else {
-        $mime_type = explode(',', $request_headers['Accept']);
-      }
-    } else {
-      $mime_type = 'application/json';
-    }
-
-    if(is_array($mime_type) && count($mime_type) > 1) {
-      $mime_types = $mime_type;
-      foreach($mime_types as $mime_type) {
-        if($class_instance = $this->getFromatterClassInstance($mime_type)) {
+  public function createFormatter($accept_mime_type) {
+    if(is_array($accept_mime_type) && count($accept_mime_type) > 1) {
+      $mime_types = $accept_mime_type;
+      foreach($mime_types as $accept_mime_type) {
+        if($class_instance = $this->getFromatterClassInstance($accept_mime_type)) {
           return $class_instance;
         }
       }
-      unset($mime_type);
-    } else if(is_array($mime_type) && count($mime_type) == 1) {
-      $mime_type = $mime_type[0];
+      unset($accept_mime_type);
+    } else if(is_array($accept_mime_type) && count($accept_mime_type) == 1) {
+      $accept_mime_type = $accept_mime_type[0];
     }
 
-    if(!empty($mime_type)) {
-      if($class_instance = $this->getFromatterClassInstance($mime_type)) {
+    if(!empty($accept_mime_type)) {
+      if($class_instance = $this->getFromatterClassInstance($accept_mime_type)) {
         return $class_instance;
       }
     }
 
-    throw new \InvalidArgumentException('The requested response format is not supported!');
+    throw new \Exception('The requested response format is not supported!');
   }
 
 
-  private function getFromatterClassInstance($mime_type) {
-    if($subtype = $this->getSubtype($mime_type)) {
+  private function getFromatterClassInstance($accept_mime_type) {
+    if($subtype = $this->getSubtype($accept_mime_type)) {
       $class_name = $this->getFormatterClassName($subtype);
 
       if(class_exists($class_name)) {

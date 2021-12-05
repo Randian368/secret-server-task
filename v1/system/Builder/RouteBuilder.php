@@ -1,6 +1,5 @@
 <?php
 namespace Builder;
-use \Route\ControllerRoute;
 use \Helper\StringHelper as StringHelper;
 
 
@@ -17,12 +16,12 @@ class RouteBuilder {
       }
 
       if(!$route instanceof \Route) {
-        // error handling
+        $route = new \Route(); // all properties are null
       }
-      return $route;
     } else {
-      // error handling
+      $route = new \Route(); // all properties are null
     }
+    return $route;
   }
 
 

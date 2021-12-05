@@ -31,7 +31,7 @@ class Route {
 
   public function visit() {
     if($this->arg) {
-      $response = ($this->class)->($this->method)($this->arg);
+      $response = ($this->class)->($this->method)($route->arg);
     } else {
       $response = ($this->class)->($this->method)();
     }

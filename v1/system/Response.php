@@ -1,18 +1,17 @@
 <?php
+use \Request;
 use \ResponseFormatter\ResponseFormatterFactory as ResponseFormatterFactory;
 
 class Response {
+  private $request;
   private $formatter;
   private $head;
   private $body;
 
-  public function __construct($response_body) {
-    $this->formatter = (new ResponseFormatterFactory())->createFormatter();
-    $this->body = $response_body;
+  public function __construct(Request $request) {
+    $this->request = $request;
   }
 
 
-  public function get() {
-    return $this->formatter->format($this->body);
-  }
+
 }
