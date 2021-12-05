@@ -28,4 +28,13 @@ class Route {
   public function getArgument() {
     return $this->arg;
   }
+
+  public function visit() {
+    if($this->arg) {
+      $response = ($this->class)->($this->method)($this->arg);
+    } else {
+      $response = ($this->class)->($this->method)();
+    }
+    return $response;
+  }
 }
