@@ -8,8 +8,8 @@ class Request {
   private $http_headers;
 
 
-  public function __construnct() {
-    $this->http_headers       = apache_request_headers();
+  public function __construct() {
+    $this->http_headers       = $this->getHttpHeaders();
     $this->accept_mime_type   = $this->getAcceptMimeType();
     $this->http_method        = $this->getHttpMethod();
   }
@@ -93,7 +93,8 @@ class Request {
 
   public function getHttpHeaders() {
     if(empty($this->http_headers)) {
-      $this->setHttpHeaders(apache_request_headers());
+      $http_headers = function_exists('apache_request_headers') ? apache_request_headers() : [];
+      $this->setHttpHeaders($http_headers);
     }
     return $this->http_headers;
   }

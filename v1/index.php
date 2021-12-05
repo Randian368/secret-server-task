@@ -25,5 +25,5 @@ $response = $request->getResponse($route);
 
 $response_formatter->format($response);
 
-header('Content-type: ' . $request->getAcceptMimeType());
+header('Content-type: ' . $response_formatter->getFormatMimeType());
 print($response);
