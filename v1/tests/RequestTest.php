@@ -23,4 +23,50 @@ final class RequestTest extends TestCase {
     $this->assertTrue($request->isValidRequestRoute($route));
   }
 
+
+  /**
+  * @test
+  */
+  public function testGetAcceptMimeType() {
+    $request = new \Request();
+    $request->setHttpHeaders(['Accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9']);
+    $this->assertSame($request->getAcceptMimeType(), explode(',', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'));
+
+    $request = new \Request();
+    $request->setHttpHeaders(['User-Agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0']);
+    $this->assertSame($request->getAcceptMimeType(), 'application/json');
+  }
+
+
+  /**
+  * @test
+  */
+  public function testIsSupportedProtocol() {
+    $request = new \Request();
+    $request->setProtocol('SOAP');
+    $this->assertFalse($request->isSupportedProtocol());
+
+    $request->setProtocol('HTTP/1.1');
+    $this->assertTrue($request->isSupportedProtocol());
+  }
+
+
+  /**
+  * @test
+  */
+  public function testIsSupportedHttpMethod() {
+    $request = new \Request();
+    $request->setHttpMethod('PUT');
+    $this->assertFalse($request->isSupportedHttpMethod());
+
+    $request->setHttpMethod('POST');
+    $this->assertTrue($request->isSupportedHttpMethod());
+  }
+
+
+  public function testGetResponse() {
+    $route = new Route();
+
+  }
+
 }
