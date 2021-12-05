@@ -6,34 +6,55 @@ class Route {
   protected $arg;
 
   public function getClass() {
-    return $this->method;
+    return $this->class;
   }
+
 
   public function setClass(Object $class) {
     $this->class = $class;
   }
 
+  public function hasClassInstance() {
+    $class = $this->getClass();
+    return (bool)($class !== null && !empty($class) && gettype($class) == 'object');
+  }
+
+
   public function getMethod() {
     return $this->method;
   }
+
 
   public function setMethod(String $method) {
     $this->method = $method;
   }
 
+
+  public function hasMethod() {
+    $method = $this->getMethod();
+    return (bool)($method !== null && !empty($method));
+  }
+
+
   public function setArgument($arg) {
     $this->arg = $arg;
   }
+
 
   public function getArgument() {
     return $this->arg;
   }
 
+
   public function visit() {
-    if($this->arg) {
-      $response = ($this->class)->($this->method)($route->arg);
+    $class = $this->getClass();
+    $mehod = $this->getMethod();
+    $arg = $this->getArgument();
+
+    if($arg) {
+      $response = $class->$method($arg);
     } else {
-      $response = ($this->class)->($this->method)();
+      $response = $class->$method();
     }
     return $response;
   }

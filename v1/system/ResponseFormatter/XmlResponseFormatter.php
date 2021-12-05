@@ -1,8 +1,9 @@
 <?php
 namespace ResponseFormatter;
+use \Base\ResponseFormatterInterface;
 
-class XmlResponseFormatter implements Interface\ResponseFormatterInterface {
-  
+class XmlResponseFormatter implements ResponseFormatterInterface {
+
   public function format($response) {
     $response_array = json_decode(json_encode($response), JSON_OBJECT_AS_ARRAY);
     return $this->xml_encode($response_array);

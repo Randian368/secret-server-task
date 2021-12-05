@@ -11,11 +11,11 @@ class RouteBuilder {
 
     if($this->isValidPath($path)) {
       $route = $this->buildPrefixedRoute($path, '\Controller\\');
-      if(!$route instanceof \Route) {
+      if(!($route instanceof \Route)) {
         $route = $this->buildPrefixedRoute($path, '\Model\\');
       }
 
-      if(!$route instanceof \Route) {
+      if(!($route instanceof \Route)) {
         $route = new \Route(); // all properties are null
       }
     } else {

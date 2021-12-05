@@ -3,22 +3,25 @@ declare(strict_types = 1);
 
 namespace Controller;
 
-use \Model\Secret;
+use \Base\ApiControllerInterface;
+use \Model\Secret as Secret;
 
-class SecretServer implements Interface\ApiControllerInterface {
+
+class SecretServer implements ApiControllerInterface {
   private $response;
+  private $secret;
 
   public function __construct() {
-    $this->model = new \Model\Secret;
+    $this->secret = new Secret();
   }
 
   public function get($hash) : \Response{
-
+    return new \Response();
   }
 
 
   public function post() : \Response {
-
+    return new \Response();
   }
 
 

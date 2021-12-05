@@ -1,5 +1,5 @@
 <?php
-namespace Interface;
+namespace Base;
 
 interface ResponseFormatterInterface {
   public function format($response);

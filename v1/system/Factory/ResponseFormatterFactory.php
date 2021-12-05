@@ -1,5 +1,5 @@
 <?php
-namespace ResponseFormatter;
+namespace Factory;
 use \Helper\StringHelper as StringHelper;
 
 class ResponseFormatterFactory {
