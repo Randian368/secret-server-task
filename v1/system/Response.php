@@ -1,5 +1,4 @@
 <?php
-use \Request;
 use \ResponseFormatter\ResponseFormatterFactory as ResponseFormatterFactory;
 
 class Response {

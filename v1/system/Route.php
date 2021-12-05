@@ -48,14 +48,17 @@ class Route {
 
   public function visit() {
     $class = $this->getClass();
-    $mehod = $this->getMethod();
+    $method = $this->getMethod();
     $arg = $this->getArgument();
 
-    if($arg) {
-      $response = $class->$method($arg);
-    } else {
-      $response = $class->$method();
+    if($this->hasClassInstance() && $this->hasMethod()) {
+      if($arg) {
+        $response = $class->$method($arg);
+      } else {
+        $response = $class->$method();
+      }
+      return $response;
     }
-    return $response;
   }
+  
 }
