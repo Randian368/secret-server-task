@@ -27,7 +27,6 @@ class SecretServer implements ControllerInterface {
 
     if(!$this->response) {
       $this->setErrorResponse('404001');
-      var_dump($this->response);
     }
 
     return $this->getResponse();

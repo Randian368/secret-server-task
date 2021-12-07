@@ -14,7 +14,7 @@ class Model {
   }
 
   public function connect() {
-    $this->db = new \Db($this->hostname, $this->username, $this->password, $this->database, $this->port);
-    $this->db->query('lol');
+    //$this->db = new \Db($this->hostname, $this->username, $this->password, $this->database, $this->port);
+  //  $this->db->query('lol');
   }
 }

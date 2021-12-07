@@ -37,7 +37,7 @@ class Request {
   public function isValidRequestRoute(Route $route) {
     if($route->hasClassInstance() && $route->hasMethod()) {
       if($route->getClass() instanceof \Base\ControllerInterface) {
-        if(method_exists('\Base\ApiControllerInterface', $route->getMethod())) {
+        if(method_exists('\Base\ControllerInterface', $route->getMethod())) {
           return true;
         }
       }
