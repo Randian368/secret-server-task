@@ -7,8 +7,8 @@ namespace Composer\Autoload;
 class ComposerStaticInitde77e2f9adae2e8eaad5c25ea67e7394
 {
     public static $files = array (
-        'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
     );
 
@@ -41,8 +41,8 @@ class ComposerStaticInitde77e2f9adae2e8eaad5c25ea67e7394
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -78,6 +78,7 @@ class ComposerStaticInitde77e2f9adae2e8eaad5c25ea67e7394
 
     public static $classMap = array (
         'Base\\ControllerInterface' => __DIR__ . '/../..' . '/system/Base/ControllerInterface.php',
+        'Base\\ModelInterface' => __DIR__ . '/../..' . '/system/Base/ModelInterface .php',
         'Base\\ResponseFormatterInterface' => __DIR__ . '/../..' . '/system/Base/ResponseFormatterInterface.php',
         'Builder\\RouteBuilder' => __DIR__ . '/../..' . '/system/Builder/RouteBuilder.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',

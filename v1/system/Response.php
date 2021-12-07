@@ -3,17 +3,9 @@ use \ResponseFormatter\ResponseFormatterFactory as ResponseFormatterFactory;
 
 class Response {
   public $body;
+
   private $http_status_code;
   private $http_headers = [];
-
-  public function setHttpStatusCode($http_status_code) {
-    $this->http_status_code = $http_status_code;
-  }
-
-
-  public function getHttpStatusCode() {
-    return $this->http_status_code ?: 200;
-  }
 
 
   public function setBody($body) {
@@ -23,6 +15,16 @@ class Response {
 
   public function getBody() {
     return $this->body;
+  }
+
+
+  public function setHttpStatusCode($http_status_code) {
+    $this->http_status_code = $http_status_code;
+  }
+
+
+  public function getHttpStatusCode() {
+    return $this->http_status_code ?: 200;
   }
 
 
@@ -42,6 +44,10 @@ class Response {
 
 
   public function output() {
+    if(empty($this->getBody())) {
+      $this->setHttpStatusCode(204);
+    }
+
     $http_status_code = $this->getHttpStatusCode();
     http_response_code($http_status_code);
 

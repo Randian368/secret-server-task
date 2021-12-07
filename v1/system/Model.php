@@ -21,6 +21,7 @@ class Model {
     $this->connect();
   }
 
+
   public function connect() {
     $this->db = new \Db($this->hostname, $this->username, $this->password, $this->database, $this->port);
   }
