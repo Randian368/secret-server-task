@@ -1,8 +1,8 @@
 <?php
-$predefined_paths = [
+$config_routes = [
   'secret'              => 'SecretServer/post',
   'secret\/([^\s\/]+)'  => 'SecretServer/get/$1'
 ];
 
-define('PREDEFINED_PATHS', $predefined_paths);
-unset($predefined_paths);
+define('CONFIG_ROUTES', $config_routes);
+unset($config_routes);
