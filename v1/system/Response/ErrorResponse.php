@@ -21,7 +21,10 @@ class ErrorResponse extends \Response {
     $error = $this->getErrorByInnerCode($inner_code);
 
     $this->setHttpStatusCode($error['code']);
-    $this->setBody(array_merge($error, $custom_addition));
+    $this->setBody(['error' => [
+      'code'    => $error['inner_code'],
+      'message' => implode('. ', [$error['name'], $error['message']])
+    ]]);
   }
 
 
