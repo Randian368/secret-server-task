@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 'off');
 
 try {
   require __DIR__.'/./startup.php';
@@ -21,7 +22,7 @@ try {
 
   $response = $request->getResponse($route);
 
-} catch (\Exception | \ErrorException $e) {
+} catch (\Exception | \ErrorException | \Error $e) {
   $request = new \Request();
   $response = $request->getExceptionResponse();
 }

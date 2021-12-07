@@ -5,8 +5,8 @@ use \Helper\StringHelper as StringHelper;
 
 class RouteBuilder {
   public function build(String $path) {
-    if($predefined_route = $this->getPredefinedPath($path)) {
-      $path = $predefined_route;
+    if($config_route = $this->getConfigRoute($path)) {
+      $path = $config_route;
     }
 
     if($this->isValidPath($path)) {
@@ -79,16 +79,16 @@ class RouteBuilder {
   }
 
 
-  private function getPredefinedPath($path) {
+  private function getConfigRoute($path) {
     $result = '';
 
-    if(defined('PREDEFINED_PATHS')) {
-      foreach(PREDEFINED_PATHS as $pattern => $predefined_path) {
+    if(defined('CONFIG_ROUTES')) {
+      foreach(CONFIG_ROUTES as $pattern => $config_route) {
         if(preg_match('/' . $pattern . '/i', $path, $matches)) {
           if(count($matches) > 1) {
-            $result = $this->replaceCapturingGroups($predefined_path, $matches);
+            $result = $this->replaceCapturingGroups($config_route, $matches);
           } else {
-            $result = $predefined_path;
+            $result = $config_route;
           }
         }
       }
@@ -97,8 +97,8 @@ class RouteBuilder {
   }
 
 
-  private function replaceCapturingGroups($predefined_path, $matches) {
-    $replaced = $predefined_path;
+  private function replaceCapturingGroups($config_route, $matches) {
+    $replaced = $config_route;
     for($i = 1; $i < count($matches); $i++) {
       $replaced = preg_replace('/\$' . $i . '(?:[^\d]|$)/', $matches[$i], $replaced);
     }
