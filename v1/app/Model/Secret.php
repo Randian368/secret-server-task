@@ -9,7 +9,7 @@ class Secret extends \Model{
   public $remainingViews = 0;
 
   public function getByHash(String $hash) {
-    if(!$this->db->isConnected()) $this->connect();
+    
 
 
   }

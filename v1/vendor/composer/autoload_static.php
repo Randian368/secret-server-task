@@ -77,13 +77,13 @@ class ComposerStaticInitde77e2f9adae2e8eaad5c25ea67e7394
     );
 
     public static $classMap = array (
-        'Base\\ApiControllerInterface' => __DIR__ . '/../..' . '/system/Base/ApiControllerInterface.php',
+        'Base\\ControllerInterface' => __DIR__ . '/../..' . '/system/Base/ControllerInterface.php',
         'Base\\ResponseFormatterInterface' => __DIR__ . '/../..' . '/system/Base/ResponseFormatterInterface.php',
         'Builder\\RouteBuilder' => __DIR__ . '/../..' . '/system/Builder/RouteBuilder.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Concern\\ControllerTrait' => __DIR__ . '/../..' . '/system/Concern/ControllerTrait.php',
         'Controller\\SecretServer' => __DIR__ . '/../..' . '/app/Controller/SecretServer.php',
         'Db' => __DIR__ . '/../..' . '/system/Db.php',
-        'ErrorResponse' => __DIR__ . '/../..' . '/system/Response/ErrorResponse.php',
         'Factory\\ResponseFormatterFactory' => __DIR__ . '/../..' . '/system/Factory/ResponseFormatterFactory.php',
         'Helper\\StringHelper' => __DIR__ . '/../..' . '/system/Helper/StringHelper.php',
         'Model' => __DIR__ . '/../..' . '/system/Model.php',
@@ -508,6 +508,7 @@ class ComposerStaticInitde77e2f9adae2e8eaad5c25ea67e7394
         'Response' => __DIR__ . '/../..' . '/system/Response.php',
         'ResponseFormatter\\JsonResponseFormatter' => __DIR__ . '/../..' . '/system/ResponseFormatter/JsonResponseFormatter.php',
         'ResponseFormatter\\XmlResponseFormatter' => __DIR__ . '/../..' . '/system/ResponseFormatter/XmlResponseFormatter.php',
+        'Response\\ErrorResponse' => __DIR__ . '/../..' . '/system/Response/ErrorResponse.php',
         'Route' => __DIR__ . '/../..' . '/system/Route.php',
         'SebastianBergmann\\CliParser\\AmbiguousOptionException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/AmbiguousOptionException.php',
         'SebastianBergmann\\CliParser\\Exception' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/Exception.php',

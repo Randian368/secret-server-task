@@ -6,13 +6,13 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Base\\ApiControllerInterface' => $baseDir . '/system/Base/ApiControllerInterface.php',
+    'Base\\ControllerInterface' => $baseDir . '/system/Base/ControllerInterface.php',
     'Base\\ResponseFormatterInterface' => $baseDir . '/system/Base/ResponseFormatterInterface.php',
     'Builder\\RouteBuilder' => $baseDir . '/system/Builder/RouteBuilder.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Concern\\ControllerTrait' => $baseDir . '/system/Concern/ControllerTrait.php',
     'Controller\\SecretServer' => $baseDir . '/app/Controller/SecretServer.php',
     'Db' => $baseDir . '/system/Db.php',
-    'ErrorResponse' => $baseDir . '/system/Response/ErrorResponse.php',
     'Factory\\ResponseFormatterFactory' => $baseDir . '/system/Factory/ResponseFormatterFactory.php',
     'Helper\\StringHelper' => $baseDir . '/system/Helper/StringHelper.php',
     'Model' => $baseDir . '/system/Model.php',
@@ -437,6 +437,7 @@ return array(
     'Response' => $baseDir . '/system/Response.php',
     'ResponseFormatter\\JsonResponseFormatter' => $baseDir . '/system/ResponseFormatter/JsonResponseFormatter.php',
     'ResponseFormatter\\XmlResponseFormatter' => $baseDir . '/system/ResponseFormatter/XmlResponseFormatter.php',
+    'Response\\ErrorResponse' => $baseDir . '/system/Response/ErrorResponse.php',
     'Route' => $baseDir . '/system/Route.php',
     'SebastianBergmann\\CliParser\\AmbiguousOptionException' => $vendorDir . '/sebastian/cli-parser/src/exceptions/AmbiguousOptionException.php',
     'SebastianBergmann\\CliParser\\Exception' => $vendorDir . '/sebastian/cli-parser/src/exceptions/Exception.php',

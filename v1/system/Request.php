@@ -19,19 +19,24 @@ class Request {
     if($this->isValidRequestRoute($route)) {
       $response = $route->visit();
     } else {
-      $response = new \Response\ErrorResponse('400001');
+      $response = new \Response\ErrorResponse(400, 'Bad request. The requested endpoint is malformatted or unaccessible to this client.');
     }
 
     if(!($response instanceof \Response)) {
-      $response = new \Response\ErrorResponse('500001');
+      $response = $this->getExceptionResponse();
     }
     return $response;
   }
 
 
+  public function getExceptionResponse() {
+    return new \Response\ErrorResponse(500, 'A internal error occurred during the execution of this request.');
+  }
+
+
   public function isValidRequestRoute(Route $route) {
     if($route->hasClassInstance() && $route->hasMethod()) {
-      if($route->getClass() instanceof \Base\ApiControllerInterface) {
+      if($route->getClass() instanceof \Base\ControllerInterface) {
         if(method_exists('\Base\ApiControllerInterface', $route->getMethod())) {
           return true;
         }
