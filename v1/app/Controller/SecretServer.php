@@ -13,8 +13,10 @@ class SecretServer implements ControllerInterface {
 
   private $response;
   private $secret;
+
   private $errors = [
-    '404001' => 'Secret not found'
+    '404001' => 'Secret not found',
+    '405001' => 'Invalid input'
   ];
 
 
@@ -34,7 +36,20 @@ class SecretServer implements ControllerInterface {
 
 
   public function post() : \Response {
-    return new \Response();
+    if($this->checkRequiredPostFields()) {
+
+    } else {
+      $this->setErrorResponse('405001');
+    }
+    return $this->getResponse();
+  }
+
+
+  private function checkRequiredPostFields() {
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+      return true;
+    }
+    return false;
   }
 
 

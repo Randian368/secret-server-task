@@ -24,7 +24,6 @@ class RouteBuilder {
     return $route;
   }
 
-
   private function buildPrefixedRoute(String $path, String $type_prefix) {
     $controller = '';
     $method = '';

@@ -1,6 +1,7 @@
 <?php
 use \Factory\ResponseFormatterFactory;
 use \Response\ErrorResponse;
+use \Helper\StringHelper;
 
 class Request {
   private $http_method;
@@ -68,7 +69,6 @@ class Request {
         $this->setAcceptMimeType('application/json');
       }
     }
-
     return $this->accept_mime_type;
   }
 
@@ -92,6 +92,9 @@ class Request {
 
 
   public function setHttpHeaders($http_headers) {
+    if(!empty($http_headers)) {
+      $http_headers = $this->normalizeArrayKeyCase($http_headers);
+    }
     $this->http_headers = $http_headers;
   }
 
@@ -102,6 +105,19 @@ class Request {
       $this->setHttpHeaders($http_headers);
     }
     return $this->http_headers;
+  }
+
+
+  private function normalizeArrayKeyCase($http_headers) {
+    $normalized_http_header_names = array_map(function($name) {
+      $normalized_name = StringHelper::ucfirstLcrest($name);
+      if($name !== $normalized_name) {
+        return $normalized_name;
+      }
+      return $name;
+    }, array_keys($http_headers));
+
+    return array_combine($normalized_http_header_names, array_values($http_headers));
   }
 
 
