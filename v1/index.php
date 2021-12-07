@@ -4,7 +4,7 @@ require __DIR__.'/./startup.php';
 $request = new \Request();
 
 $response_formatter_factory = new \Factory\ResponseFormatterFactory();
-$response_formatter = $response_formatter_factory->createFormatter($request->getAcceptMimeType());
+$response_formatter = $response_formatter_factory->create($request->getAcceptMimeType());
 
 
 /*
@@ -25,5 +25,4 @@ $response = $request->getResponse($route);
 
 $response_formatter->format($response);
 
-header('Content-type: ' . $response_formatter->getFormatMimeType());
-print($response);
+$response->output();

@@ -4,7 +4,7 @@ use \Helper\StringHelper as StringHelper;
 
 class ResponseFormatterFactory {
 
-  public function createFormatter($accept_mime_type) {
+  public function create($accept_mime_type) {
     if(is_array($accept_mime_type) && count($accept_mime_type) > 1) {
       $mime_types = $accept_mime_type;
       foreach($mime_types as $accept_mime_type) {

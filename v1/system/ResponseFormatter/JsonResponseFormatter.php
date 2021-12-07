@@ -12,6 +12,9 @@ class JsonResponseFormatter implements ResponseFormatterInterface {
 
 
   public function format(&$response) {
-    $response = json_encode($response);
+    $response_body = json_encode($response->getBody());
+
+    $response->setBody($response_body);
+    $response->setHttpHeader('Content-type', $this->format_mime_type);
   }
 }

@@ -12,8 +12,13 @@ class XmlResponseFormatter implements ResponseFormatterInterface {
 
 
   public function format(&$response) {
-    $response_array = json_decode(json_encode($response), JSON_OBJECT_AS_ARRAY);
-    $response = $this->xml_encode($response_array);
+    $response_body = $response->getBody();
+
+    $response_body_array = json_decode(json_encode($response_body), JSON_OBJECT_AS_ARRAY);
+    $response_body = $this->xml_encode($response_body_array);
+
+    $response->setBody($response_body);
+    $response->setHttpHeader('Content-type', $this->format_mime_type);
   }
 
 
