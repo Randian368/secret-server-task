@@ -9,7 +9,12 @@ class Model {
   private $database;
   private $port = '3306';
 
-  protected function connect() {
-    $this->db = new \Db($this->hostname, $this->username, $this->password, $this->database, $this->port);
+  public function __construct() {
+    $this->connect();
+  }
+
+  public function connect() {
+    //$this->db = new \Db($this->hostname, $this->username, $this->password, $this->database, $this->port);
+  //  $this->db->query('lol');
   }
 }
