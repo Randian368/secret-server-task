@@ -1,7 +1,14 @@
 <?php
+
+/*
+ *  - class / file names need to be denoted in snake_case
+ *  - the beginning(^) point of patters is v1, endpoint($) is the end of the url string
+ * - patterns are interpreted in a case insensitive manner
+ */
+
 $config_routes = [
-  'secret'              => 'SecretServer/post',
-  'secret\/([^\s\/]+)'  => 'SecretServer/get/$1'
+  '^secret$'              => 'secret_server/post',
+  '^secret\/([^\s\/]+)'   => 'secret_server/get/$1'
 ];
 
 define('CONFIG_ROUTES', $config_routes);

@@ -27,6 +27,7 @@ try {
   $response = $request->getExceptionResponse();
 }
 
+
 $response_formatter_factory = new \Factory\ResponseFormatterFactory();
 $response_formatter = $response_formatter_factory->create($request->getAcceptMimeType());
 

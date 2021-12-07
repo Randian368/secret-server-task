@@ -14,12 +14,17 @@ class StringHelper {
         $start = isset($word_delimiters[0][$i - 1]) ? ($word_delimiters[0][$i - 1][1] + 1) : 0;
         $end = $delimiter[1] - $start;
 
-        $class_name .= ucfirst(substr($text, $start, $end));
+        $class_name .= StringHelper::ucfirstLcrest(substr($text, $start, $end));
       }
     } else {
-      $class_name = ucfirst($text);
+      $class_name = StringHelper::ucfirstLcrest($text);
     }
 
     return $class_name;
+  }
+
+
+  public static function ucfirstLcrest($string) {
+    return strtoupper(substr($string, 0, 1)) . strtolower(substr($string, 1));
   }
 }
