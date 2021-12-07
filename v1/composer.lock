@@ -1,9 +1,14 @@
 {
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "de098541b0cfbf244e2152476853564e",
     "packages": [
         {
             "name": "doctrine/instantiator",
             "version": "1.4.0",
-            "version_normalized": "1.4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/instantiator.git",
@@ -27,9 +32,7 @@
                 "phpstan/phpstan-phpunit": "^0.12",
                 "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
             },
-            "time": "2020-11-10T18:47:58+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Doctrine\\Instantiator\\": "src/Doctrine/Instantiator/"
@@ -70,12 +73,11 @@
                     "type": "tidelift"
                 }
             ],
-            "install-path": "../doctrine/instantiator"
+            "time": "2020-11-10T18:47:58+00:00"
         },
         {
             "name": "myclabs/deep-copy",
             "version": "1.10.2",
-            "version_normalized": "1.10.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
@@ -98,9 +100,7 @@
                 "doctrine/common": "^2.6",
                 "phpunit/phpunit": "^7.1"
             },
-            "time": "2020-11-13T09:40:50+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "DeepCopy\\": "src/DeepCopy/"
@@ -131,12 +131,11 @@
                     "type": "tidelift"
                 }
             ],
-            "install-path": "../myclabs/deep-copy"
+            "time": "2020-11-13T09:40:50+00:00"
         },
         {
             "name": "nikic/php-parser",
             "version": "v4.13.2",
-            "version_normalized": "4.13.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
@@ -156,7 +155,6 @@
                 "ircmaxell/php-yacc": "^0.0.7",
                 "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0 || ^9.0"
             },
-            "time": "2021-11-30T19:35:32+00:00",
             "bin": [
                 "bin/php-parse"
             ],
@@ -166,7 +164,6 @@
                     "dev-master": "4.9-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "PhpParser\\": "lib/PhpParser"
@@ -190,12 +187,11 @@
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
                 "source": "https://github.com/nikic/PHP-Parser/tree/v4.13.2"
             },
-            "install-path": "../nikic/php-parser"
+            "time": "2021-11-30T19:35:32+00:00"
         },
         {
             "name": "phar-io/manifest",
             "version": "2.0.3",
-            "version_normalized": "2.0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phar-io/manifest.git",
@@ -214,14 +210,12 @@
                 "phar-io/version": "^3.0.1",
                 "php": "^7.2 || ^8.0"
             },
-            "time": "2021-07-20T11:28:43+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -253,12 +247,11 @@
                 "issues": "https://github.com/phar-io/manifest/issues",
                 "source": "https://github.com/phar-io/manifest/tree/2.0.3"
             },
-            "install-path": "../phar-io/manifest"
+            "time": "2021-07-20T11:28:43+00:00"
         },
         {
             "name": "phar-io/version",
             "version": "3.1.0",
-            "version_normalized": "3.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phar-io/version.git",
@@ -273,9 +266,7 @@
             "require": {
                 "php": "^7.2 || ^8.0"
             },
-            "time": "2021-02-23T14:00:09+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -307,12 +298,11 @@
                 "issues": "https://github.com/phar-io/version/issues",
                 "source": "https://github.com/phar-io/version/tree/3.1.0"
             },
-            "install-path": "../phar-io/version"
+            "time": "2021-02-23T14:00:09+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
             "version": "2.2.0",
-            "version_normalized": "2.2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionCommon.git",
@@ -327,14 +317,12 @@
             "require": {
                 "php": "^7.2 || ^8.0"
             },
-            "time": "2020-06-27T09:03:43+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-2.x": "2.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "phpDocumentor\\Reflection\\": "src/"
@@ -363,12 +351,11 @@
                 "issues": "https://github.com/phpDocumentor/ReflectionCommon/issues",
                 "source": "https://github.com/phpDocumentor/ReflectionCommon/tree/2.x"
             },
-            "install-path": "../phpdocumentor/reflection-common"
+            "time": "2020-06-27T09:03:43+00:00"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
             "version": "5.3.0",
-            "version_normalized": "5.3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
@@ -391,14 +378,12 @@
                 "mockery/mockery": "~1.3.2",
                 "psalm/phar": "^4.8"
             },
-            "time": "2021-10-19T17:43:47+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "5.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "phpDocumentor\\Reflection\\": "src"
@@ -423,12 +408,11 @@
                 "issues": "https://github.com/phpDocumentor/ReflectionDocBlock/issues",
                 "source": "https://github.com/phpDocumentor/ReflectionDocBlock/tree/5.3.0"
             },
-            "install-path": "../phpdocumentor/reflection-docblock"
+            "time": "2021-10-19T17:43:47+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
             "version": "1.5.1",
-            "version_normalized": "1.5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
@@ -448,14 +432,12 @@
                 "ext-tokenizer": "*",
                 "psalm/phar": "^4.8"
             },
-            "time": "2021-10-02T14:08:47+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-1.x": "1.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "phpDocumentor\\Reflection\\": "src"
@@ -476,12 +458,11 @@
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
                 "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.5.1"
             },
-            "install-path": "../phpdocumentor/type-resolver"
+            "time": "2021-10-02T14:08:47+00:00"
         },
         {
             "name": "phpspec/prophecy",
             "version": "1.14.0",
-            "version_normalized": "1.14.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
@@ -504,14 +485,12 @@
                 "phpspec/phpspec": "^6.0 || ^7.0",
                 "phpunit/phpunit": "^8.0 || ^9.0"
             },
-            "time": "2021-09-10T09:02:12+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Prophecy\\": "src/Prophecy"
@@ -546,12 +525,11 @@
                 "issues": "https://github.com/phpspec/prophecy/issues",
                 "source": "https://github.com/phpspec/prophecy/tree/1.14.0"
             },
-            "install-path": "../phpspec/prophecy"
+            "time": "2021-09-10T09:02:12+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
             "version": "9.2.10",
-            "version_normalized": "9.2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
@@ -585,14 +563,12 @@
                 "ext-pcov": "*",
                 "ext-xdebug": "*"
             },
-            "time": "2021-12-05T09:12:13+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "9.2-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -626,12 +602,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../phpunit/php-code-coverage"
+            "time": "2021-12-05T09:12:13+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
             "version": "3.0.6",
-            "version_normalized": "3.0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
@@ -649,14 +624,12 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.3"
             },
-            "time": "2021-12-02T12:48:52+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "3.0-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -689,12 +662,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../phpunit/php-file-iterator"
+            "time": "2021-12-02T12:48:52+00:00"
         },
         {
             "name": "phpunit/php-invoker",
             "version": "3.1.1",
-            "version_normalized": "3.1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-invoker.git",
@@ -716,14 +688,12 @@
             "suggest": {
                 "ext-pcntl": "*"
             },
-            "time": "2020-09-28T05:58:55+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "3.1-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -755,12 +725,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../phpunit/php-invoker"
+            "time": "2020-09-28T05:58:55+00:00"
         },
         {
             "name": "phpunit/php-text-template",
             "version": "2.0.4",
-            "version_normalized": "2.0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-text-template.git",
@@ -778,14 +747,12 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.3"
             },
-            "time": "2020-10-26T05:33:50+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.0-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -817,12 +784,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../phpunit/php-text-template"
+            "time": "2020-10-26T05:33:50+00:00"
         },
         {
             "name": "phpunit/php-timer",
             "version": "5.0.3",
-            "version_normalized": "5.0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-timer.git",
@@ -840,14 +806,12 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.3"
             },
-            "time": "2020-10-26T13:16:10+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "5.0-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -879,12 +843,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../phpunit/php-timer"
+            "time": "2020-10-26T13:16:10+00:00"
         },
         {
             "name": "phpunit/phpunit",
             "version": "9.5.10",
-            "version_normalized": "9.5.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
@@ -934,7 +897,6 @@
                 "ext-soap": "*",
                 "ext-xdebug": "*"
             },
-            "time": "2021-09-25T07:38:51+00:00",
             "bin": [
                 "phpunit"
             ],
@@ -944,7 +906,6 @@
                     "dev-master": "9.5-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -985,12 +946,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../phpunit/phpunit"
+            "time": "2021-09-25T07:38:51+00:00"
         },
         {
             "name": "sebastian/cli-parser",
             "version": "1.0.1",
-            "version_normalized": "1.0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/cli-parser.git",
@@ -1008,14 +968,12 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.3"
             },
-            "time": "2020-09-28T06:08:49+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.0-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -1044,12 +1002,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../sebastian/cli-parser"
+            "time": "2020-09-28T06:08:49+00:00"
         },
         {
             "name": "sebastian/code-unit",
             "version": "1.0.8",
-            "version_normalized": "1.0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/code-unit.git",
@@ -1067,14 +1024,12 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.3"
             },
-            "time": "2020-10-26T13:08:54+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.0-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -1103,12 +1058,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../sebastian/code-unit"
+            "time": "2020-10-26T13:08:54+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
             "version": "2.0.3",
-            "version_normalized": "2.0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/code-unit-reverse-lookup.git",
@@ -1126,14 +1080,12 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.3"
             },
-            "time": "2020-09-28T05:30:19+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.0-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -1161,12 +1113,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../sebastian/code-unit-reverse-lookup"
+            "time": "2020-09-28T05:30:19+00:00"
         },
         {
             "name": "sebastian/comparator",
             "version": "4.0.6",
-            "version_normalized": "4.0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
@@ -1186,14 +1137,12 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.3"
             },
-            "time": "2020-10-26T15:49:45+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "4.0-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -1238,12 +1187,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../sebastian/comparator"
+            "time": "2020-10-26T15:49:45+00:00"
         },
         {
             "name": "sebastian/complexity",
             "version": "2.0.2",
-            "version_normalized": "2.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/complexity.git",
@@ -1262,14 +1210,12 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.3"
             },
-            "time": "2020-10-26T15:52:27+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.0-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -1298,12 +1244,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../sebastian/complexity"
+            "time": "2020-10-26T15:52:27+00:00"
         },
         {
             "name": "sebastian/diff",
             "version": "4.0.4",
-            "version_normalized": "4.0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
@@ -1322,14 +1267,12 @@
                 "phpunit/phpunit": "^9.3",
                 "symfony/process": "^4.2 || ^5"
             },
-            "time": "2020-10-26T13:10:38+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "4.0-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -1367,12 +1310,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../sebastian/diff"
+            "time": "2020-10-26T13:10:38+00:00"
         },
         {
             "name": "sebastian/environment",
             "version": "5.1.3",
-            "version_normalized": "5.1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
@@ -1393,14 +1335,12 @@
             "suggest": {
                 "ext-posix": "*"
             },
-            "time": "2020-09-28T05:52:38+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "5.1-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -1433,12 +1373,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../sebastian/environment"
+            "time": "2020-09-28T05:52:38+00:00"
         },
         {
             "name": "sebastian/exporter",
             "version": "4.0.4",
-            "version_normalized": "4.0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/exporter.git",
@@ -1458,14 +1397,12 @@
                 "ext-mbstring": "*",
                 "phpunit/phpunit": "^9.3"
             },
-            "time": "2021-11-11T14:18:36+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "4.0-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -1513,12 +1450,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../sebastian/exporter"
+            "time": "2021-11-11T14:18:36+00:00"
         },
         {
             "name": "sebastian/global-state",
             "version": "5.0.3",
-            "version_normalized": "5.0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/global-state.git",
@@ -1542,14 +1478,12 @@
             "suggest": {
                 "ext-uopz": "*"
             },
-            "time": "2021-06-11T13:31:12+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "5.0-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -1580,12 +1514,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../sebastian/global-state"
+            "time": "2021-06-11T13:31:12+00:00"
         },
         {
             "name": "sebastian/lines-of-code",
             "version": "1.0.3",
-            "version_normalized": "1.0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/lines-of-code.git",
@@ -1604,14 +1537,12 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.3"
             },
-            "time": "2020-11-28T06:42:11+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.0-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -1640,12 +1571,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../sebastian/lines-of-code"
+            "time": "2020-11-28T06:42:11+00:00"
         },
         {
             "name": "sebastian/object-enumerator",
             "version": "4.0.4",
-            "version_normalized": "4.0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/object-enumerator.git",
@@ -1665,14 +1595,12 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.3"
             },
-            "time": "2020-10-26T13:12:34+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "4.0-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -1700,12 +1628,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../sebastian/object-enumerator"
+            "time": "2020-10-26T13:12:34+00:00"
         },
         {
             "name": "sebastian/object-reflector",
             "version": "2.0.4",
-            "version_normalized": "2.0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/object-reflector.git",
@@ -1723,14 +1650,12 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.3"
             },
-            "time": "2020-10-26T13:14:26+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.0-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -1758,12 +1683,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../sebastian/object-reflector"
+            "time": "2020-10-26T13:14:26+00:00"
         },
         {
             "name": "sebastian/recursion-context",
             "version": "4.0.4",
-            "version_normalized": "4.0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/recursion-context.git",
@@ -1781,14 +1705,12 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.3"
             },
-            "time": "2020-10-26T13:17:30+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "4.0-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -1824,12 +1746,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../sebastian/recursion-context"
+            "time": "2020-10-26T13:17:30+00:00"
         },
         {
             "name": "sebastian/resource-operations",
             "version": "3.0.3",
-            "version_normalized": "3.0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/resource-operations.git",
@@ -1847,14 +1768,12 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.0"
             },
-            "time": "2020-09-28T06:45:17+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "3.0-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -1882,12 +1801,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../sebastian/resource-operations"
+            "time": "2020-09-28T06:45:17+00:00"
         },
         {
             "name": "sebastian/type",
             "version": "2.3.4",
-            "version_normalized": "2.3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/type.git",
@@ -1905,14 +1823,12 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.3"
             },
-            "time": "2021-06-15T12:49:02+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.3-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -1941,12 +1857,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../sebastian/type"
+            "time": "2021-06-15T12:49:02+00:00"
         },
         {
             "name": "sebastian/version",
             "version": "3.0.2",
-            "version_normalized": "3.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/version.git",
@@ -1961,14 +1876,12 @@
             "require": {
                 "php": ">=7.3"
             },
-            "time": "2020-09-28T06:39:44+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "3.0-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -1997,12 +1910,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../sebastian/version"
+            "time": "2020-09-28T06:39:44+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
             "version": "v1.23.0",
-            "version_normalized": "1.23.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
@@ -2020,7 +1932,6 @@
             "suggest": {
                 "ext-ctype": "For best performance"
             },
-            "time": "2021-02-19T12:13:01+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2031,7 +1942,6 @@
                     "url": "https://github.com/symfony/polyfill"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Symfony\\Polyfill\\Ctype\\": ""
@@ -2079,12 +1989,11 @@
                     "type": "tidelift"
                 }
             ],
-            "install-path": "../symfony/polyfill-ctype"
+            "time": "2021-02-19T12:13:01+00:00"
         },
         {
             "name": "theseer/tokenizer",
             "version": "1.2.1",
-            "version_normalized": "1.2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/theseer/tokenizer.git",
@@ -2102,9 +2011,7 @@
                 "ext-xmlwriter": "*",
                 "php": "^7.2 || ^8.0"
             },
-            "time": "2021-07-28T10:34:58+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -2132,12 +2039,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../theseer/tokenizer"
+            "time": "2021-07-28T10:34:58+00:00"
         },
         {
             "name": "webmozart/assert",
             "version": "1.10.0",
-            "version_normalized": "1.10.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozarts/assert.git",
@@ -2160,14 +2066,12 @@
             "require-dev": {
                 "phpunit/phpunit": "^8.5.13"
             },
-            "time": "2021-03-09T10:59:23+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.10-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Webmozart\\Assert\\": "src/"
@@ -2193,9 +2097,16 @@
                 "issues": "https://github.com/webmozarts/assert/issues",
                 "source": "https://github.com/webmozarts/assert/tree/1.10.0"
             },
-            "install-path": "../webmozart/assert"
+            "time": "2021-03-09T10:59:23+00:00"
         }
     ],
-    "dev": true,
-    "dev-package-names": []
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
 }

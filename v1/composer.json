@@ -4,5 +4,8 @@
       "psr-0": {
         "" : ["system/", "app/Controller", "app/Model"]
       }
+    },
+    "require": {
+        "phpunit/phpunit": "^9.5"
     }
 }

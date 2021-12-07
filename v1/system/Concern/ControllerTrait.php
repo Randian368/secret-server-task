@@ -4,9 +4,6 @@ declare(strict_types = 1);
 namespace Concern;
 
 trait ControllerTrait {
-  public function getResponse() : \Response {
-    return $this->response === null ? new \Response() : $this->response;
-  }
 
 
   protected function getError($inner_code) {
@@ -19,8 +16,8 @@ trait ControllerTrait {
   }
 
 
-  protected function setErrorResponse($inner_code) {
+  protected function getErrorResponse($inner_code) {
     $error = $this->getError($inner_code);
-    $this->response = new \Response\ErrorResponse($error['http_status_code'], $error['message']);
+    return new \Response\ErrorResponse($error['http_status_code'], $error['message']);
   }
 }

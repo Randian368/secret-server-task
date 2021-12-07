@@ -3,7 +3,7 @@ namespace ResponseFormatter;
 use \Base\ResponseFormatterInterface;
 
 class XmlResponseFormatter implements ResponseFormatterInterface {
-  private $format_mime_type = 'application/xml';
+  private $format_mime_type = 'text/xml';
 
 
   public function getFormatMimeType() {
@@ -16,7 +16,13 @@ class XmlResponseFormatter implements ResponseFormatterInterface {
     $response->setHttpHeader('Content-type', $this->format_mime_type);
 
     if($response_body) {
-      $response_body_array = json_decode(json_encode($response_body), JSON_OBJECT_AS_ARRAY);
+      if(gettype($response_body) == 'object') {
+        $reflection = new \ReflectionClass($response_body);
+        $root_element = $reflection->getShortName();
+      } else {
+        $root_element = 'Response';
+      }
+      $response_body_array = [$root_element => json_decode(json_encode($response_body), JSON_OBJECT_AS_ARRAY)];
       $response_body = $this->xml_encode($response_body_array);
 
       $response->setBody($response_body);
@@ -49,11 +55,13 @@ class XmlResponseFormatter implements ResponseFormatterInterface {
             $plural = $DOMDocument->createElement($index);
             $domElement->appendChild($plural);
             $node = $plural;
+            /*
             if (!(rtrim($index, 's') === $index)) {
               $singular = $DOMDocument->createElement(rtrim($index, 's'));
               $plural->appendChild($singular);
               $node = $singular;
             }
+            */
           }
 
           $this->xml_encode($mixedElement, $node, $DOMDocument);

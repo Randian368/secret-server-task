@@ -12,9 +12,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `secret` (
   `hash` varchar(40) NOT NULL PRIMARY KEY,
   `secretText` text NOT NULL,
-  `createdAt` datetime NOT NULL,
-  `expiresAt` datetime NOT NULL,
-  `remainingViews` int(32) NOT NULL
+  `createdAt` INT(32) NOT NULL,
+  `expiresAt` INT(32) NOT NULL,
+  `expiresAfterMinutes` INT(32) NOT NULL,
+  `expiresAfterViews` INT(32) NOT NULL,
+  `remainingViews` INT(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 COMMIT;

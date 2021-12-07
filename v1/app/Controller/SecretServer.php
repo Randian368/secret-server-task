@@ -13,10 +13,12 @@ class SecretServer implements ControllerInterface {
 
   private $response;
   private $secret;
+  private $post;
 
   private $errors = [
     '404001' => 'Secret not found',
-    '405001' => 'Invalid input'
+    '405001' => 'Invalid input',
+    '500001' => 'Secret couldn\'t be created due to an unexpected internal error'
   ];
 
 
@@ -25,45 +27,62 @@ class SecretServer implements ControllerInterface {
   }
 
   public function get($hash) : \Response{
-    $this->response = $this->secret->getByHash($hash);
+    $this->secret->setByHash($hash);
 
-    if(!$this->response) {
-      $this->setErrorResponse('404001');
+    if(!$this->secret->getHash()) {
+      $this->response = $this->getErrorResponse('404001');
+    } else {
+      $this->response = $this->secret->toResponse();
     }
 
-    return $this->getResponse();
+    return $this->response;
   }
 
 
   public function post() : \Response {
     if($this->checkRequiredPostFields()) {
+      $this->secret->create($this->post_data);
 
+      if(empty($this->secret->getHash())) {
+        $this->response = $this->getErrorResponse('500001');
+      } else {
+        $this->response = $this->secret->toResponse();
+      }
     } else {
-      $this->setErrorResponse('405001');
+      $this->response = $this->getErrorResponse('405001');
     }
-    return $this->getResponse();
+    return $this->response;
   }
 
 
-  private function checkRequiredPostFields() {
-    if($_SERVER['REQUEST_METHOD'] === 'POST') {
-      return true;
+  public function getResponse() :\Response {
+    return $this->response ?: new \Response();
+  }
+
+
+  public function setPostData($post_data) : void {
+    $this->post_data = $post_data;
+  }
+
+
+  private function checkRequiredPostFields() : bool {
+    if(!$this->post_data) {
+      if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $this->post_data = $_POST;
+      } else {
+        return false;
+      }
     }
-    return false;
+    if(!isset($this->post_data['secret']) || empty($this->post_data['secret'])) {
+      return false;
+    }
+    if(!isset($this->post_data['expireAfterViews']) || empty($this->post_data['expireAfterViews']) || !is_numeric($this->post_data['expireAfterViews']) || $this->post_data['expireAfterViews'] <= 0) {
+      return false;
+    }
+    if(!isset($this->post_data['expireAfter']) || empty($this->post_data['expireAfter']) || !is_numeric($this->post_data['expireAfter'])) {
+      return false;
+    }
+
+    return true;
   }
-
-
-
-
-  private function createNewSecret() {
-
-
-  }
-
-
-  private function getSecretByHash(String $hash) {
-
-  }
-
-
 }

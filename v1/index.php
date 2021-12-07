@@ -1,7 +1,7 @@
 <?php
-ini_set('display_errors', 'off');
+//ini_set('display_errors', 'off');
 
-try {
+//try {
   require __DIR__.'/./startup.php';
 
   $request = new \Request();
@@ -22,10 +22,10 @@ try {
 
   $response = $request->getResponse($route);
 
-} catch (\Exception | \ErrorException | \Error $e) {
+/*} catch (\Exception | \ErrorException | \Error $e) {
   $request = new \Request();
   $response = $request->getExceptionResponse();
-}
+}*/
 
 
 $response_formatter_factory = new \Factory\ResponseFormatterFactory();

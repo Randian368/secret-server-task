@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Base\\ControllerInterface' => $baseDir . '/system/Base/ControllerInterface.php',
+    'Base\\ModelInterface' => $baseDir . '/system/Base/ModelInterface .php',
     'Base\\ResponseFormatterInterface' => $baseDir . '/system/Base/ResponseFormatterInterface.php',
     'Builder\\RouteBuilder' => $baseDir . '/system/Builder/RouteBuilder.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
