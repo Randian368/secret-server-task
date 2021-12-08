@@ -15,6 +15,6 @@
 
 **Hosting**: This API is hosted at: http://api.secret-server.randian368.link/v1/
 
-**Code quality**: The codebase was written in Object Oriented style and uses PSR-0 autoloading with Composer. I would say it is about 6/10 adherent to clean code principles. It doesn't have documentation (or docbloc style comments) either.
+**Code quality**: The codebase was written in Object Oriented style and uses PSR-0 autoloading with Composer. I would say it is about 6/10 adherent to clean code principles.
 
-Most classes, and some of their less obvious methods do have comments explaining their purpose/responsibility, and in general I believe the object structure is straightforward.
+Most classes, and some of their less obvious methods do have docblock-style comments explaining their purpose/responsibility, and in general I believe the object structure is straightforward.
