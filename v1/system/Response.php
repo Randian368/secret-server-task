@@ -3,7 +3,7 @@ use \ResponseFormatter\ResponseFormatterFactory as ResponseFormatterFactory;
 
 /**
  * @purpose
- * Provides a structured interface for responding to api api requests.
+ * Provides a structured interface for responding to api requests.
  * Specific response subtypes (e.g error response) may extend this class.
  */
 class Response {
