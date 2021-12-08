@@ -9,16 +9,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 
-CREATE TABLE `secret` (
-  `hash` varchar(40) NOT NULL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS `secret` (
+  `hash` varchar(40) NOT NULL,
   `secretText` text NOT NULL,
-  `createdAt` INT(32) NOT NULL,
-  `expiresAt` INT(32) NOT NULL,
-  `expiresAfterMinutes` INT(32) NOT NULL,
-  `expiresAfterViews` INT(32) NOT NULL,
-  `remainingViews` INT(32) NOT NULL
+  `createdAt` int(32) NOT NULL,
+  `expiresAt` int(32) NOT NULL,
+  `expiresAfterMinutes` int(32) NOT NULL,
+  `expiresAfterViews` int(32) NOT NULL,
+  `remainingViews` int(32) NOT NULL,
+  PRIMARY KEY (`hash`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
