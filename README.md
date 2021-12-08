@@ -7,7 +7,7 @@
 
 ## Project description
 **Database:** The database for this API service contains a single table named <em>secret</em>, the columns of which are detailed in the following table:
-![Columns of the secret data table](/about/database_secret_server_table_secret.jpg)
+![Columns of the secret data table](/669fa237c9558de5726da18d5e84340fc7e9c41c/about/image/database_secret_server_table_secret.jpg)
 
 **API Response types:** The API can respond with XML or JSON data based on the Accept HTTP request header. The Accept header is supported in a case-insensitive manner in accordance with  RFC 2616.  
 
