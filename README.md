@@ -1,27 +1,20 @@
-# Secret Server Coding Task
+# About
 
-## Introduction
-Your task is to implement a secret server. The secret server can be used to store and share secrets
-using the random generated URL. But the secret can be read only a limited number of times after that
-it will expire and won’t be available. The secret may have TTL. After the expiration time the secret
-won’t be available anymore. You can find the detailed API documentation in the swagger.yaml file.
-We recommend to use [Swagger](https://editor.swagger.io/) or any other OpenAPI implementation to
-read the documentation. 
+## Technologies used
+**Server:** Apache HTTP   
+**Language:** PHP 7.4.1   
+**Framework:** No frameworks were used
 
-## Task
-**Implementation**: You have to implement the whole Secret Server API. If it is not specified you can choose the technology
-you want to use (database, programming language, framework, etc). However it would be wise to store the data using encryption now this is not part of the task. You can use plain text to store your secrets.
+## Project description
+**Database:** The database for this API service contains a single table named <em>secret</em>, the columns of which are detailed in the following table:
+![Columns of the secret data table](/about/image/database_secret_server_table_secret.jpg)
 
-**Response types**
-The API must be able to response with XML or JSON too, based on the [Accept header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept). Other response types (such as YAML) might be added later so prepare your code to be extandable. 
+**API Response types:** The API can respond with XML or JSON data based on the Accept HTTP request header. The Accept header is supported in a case-insensitive manner in accordance with  RFC 2616.  
 
-**Hosting**: You also have to deploy and host the service. There are plenty of free solutions to do this. So this shouldn't
-be an issue. If this API was used in production, then HTTPS would be a must but this is not the case now. It is allowed to use HTTP too.
+**Extendability:** Additional response formats could be easily added without modifying existing code. All that would be needed for an additional response format is a new class that implements `ResponseFormatterInterface` and conforms to the specific classname structure required by `ResponseFromatterFactory`.
 
-**Code quality matters**: We love OOP style well documented PSR compatible clean code. Automation test coverage is not a requirement but definitely is a plus.
+**Hosting**: This API is hosted at: http://api.secret-server.randian368.link/v1/
 
-**Share the code**: Upload the code to your GitHub account and share with us.
+**Code quality**: The codebase was written in Object Oriented style and uses PSR-0 autoloading with Composer. I would say it is about 6/10 adherent to clean code principles. It doesn't have documentation (or docbloc style comments) either.
 
-## Questions
-It is totaly OK to ask if something is not clear. 
-
+Most classes, and some of their less obvious methods do have comments explaining their purpose/responsibility, and in general I believe the object structure is straightforward.

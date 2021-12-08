@@ -55,7 +55,7 @@ class Secret extends \Model implements ModelInterface {
         $this->secretText = $this->decryptSecretText($result['secretText']);
         $this->createdAt = date($this->date_display_format, (int)$result['createdAt']);
         $this->expiresAt = date($this->date_display_format, (int)$result['expiresAt']);
-        $this->remainingViews = (int)$result['remainingViews'] - 1;
+        $this->remainingViews = $subtract_remaining_views ? (int)$result['remainingViews'] - 1 : (int)$result['remainingViews'];
       }
     }
   }

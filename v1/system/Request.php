@@ -1,8 +1,16 @@
 <?php
+
 use \Factory\ResponseFormatterFactory;
 use \Response\ErrorResponse;
 use \Helper\StringHelper;
 
+/**
+ *  @purpose
+ *  Provide encapsulation for functionalities that concern an api request;
+ *  such as validating the request route, handling request-related errors (e.g bad request routes, or no retrievable response)
+ *  and ensuring that every api request results in a Response object
+ *
+ */
 class Request {
   private $http_method;
   private $accept_mime_type;
@@ -30,11 +38,21 @@ class Request {
   }
 
 
+  /** Gets the default, general ErrorResponse to output in case of an unexpected error.
+   * @method getExceptionResponse
+   * @return Response
+   */
   public function getExceptionResponse() {
     return new \Response\ErrorResponse(500, 'A internal error occurred during the execution of this request.');
   }
 
 
+  /**
+   *  @method isValidRequestRoute
+   *  @param Route $route
+   *  @return bool                   The api only services through the predefined controller interface methods.
+   *                                 If the Request is not to a controller class and one of its controller interface methods, isValidRequestRoute returns false
+   */
   public function isValidRequestRoute(Route $route) {
     if($route->hasClassInstance() && $route->hasMethod()) {
       if($route->getClass() instanceof \Base\ControllerInterface) {
@@ -57,6 +75,10 @@ class Request {
   }
 
 
+  /** Retrieves the Request's Accepted mime type, if empty, attempts to set it. Default / fallback is application/json.
+   *  @method getAcceptMimeType
+   *  @return string|array            The value of the Accept HTTP header, string if only one type is accepted by the client, array if multiple
+   */
   public function getAcceptMimeType() {
     if(empty($this->accept_mime_type)) {
       if(isset($this->http_headers['Accept']) && !empty($this->http_headers['Accept'])) {
@@ -83,6 +105,10 @@ class Request {
   }
 
 
+  /** Retrieves this Request's HTTP method, if empty, attempts to set it
+   *  @method getHttpMethod
+   *  @return string                   e.g. HTTP/1.1
+   */
   public function getHttpMethod() {
     if(empty($this->http_method)) {
       $this->setHttpMethod($_SERVER['REQUEST_METHOD']);
@@ -91,6 +117,11 @@ class Request {
   }
 
 
+  /** Sets the HTTP headers that the Response object should take into consideration when creating a Response
+   *  @method setHttpHeaders
+   *  @param array $http_headers       a set of HTTP header key-valuze pairs for this Request to consider when responsing, formatted like the return value of apache_request_headers()
+   *  @return null
+   */
   public function setHttpHeaders($http_headers) {
     if(!empty($http_headers)) {
       $http_headers = $this->normalizeArrayKeyCase($http_headers);
@@ -108,6 +139,11 @@ class Request {
   }
 
 
+  /** Since HTTP headers are case-insensitive (any case combination should be accepted as valid) the HTTP header array must be transformed to an uniform key case format.
+    * @method normalizeArrayKeyCase
+    * @param array $http_headers
+    * @return array
+    */
   private function normalizeArrayKeyCase($http_headers) {
     $normalized_http_header_names = array_map(function($name) {
       $normalized_name = StringHelper::ucfirstLcrest($name);

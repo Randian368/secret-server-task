@@ -1,9 +1,12 @@
 <?php
+define('ENV', 'LOCAL');
+
 require_once __DIR__.'/./vendor/autoload.php';
 
 load_config_files();
 
-$model = new Model();
+$database = new Model();
+$database->connect();
 
 
 function load_config_files() {

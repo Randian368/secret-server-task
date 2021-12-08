@@ -3,8 +3,8 @@ declare(strict_types = 1);
 
 namespace Concern;
 
+/** A mixin for Controllers that provides functionality for easily responding with a custom ErrorResponse. */
 trait ControllerTrait {
-
 
   protected function getError($inner_code) {
     $error = [

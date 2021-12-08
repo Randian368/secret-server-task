@@ -1,5 +1,11 @@
 <?php
 
+/**
+ *  @purpose
+ *  Provide common functionality to all the application's models
+ *  such as connecting to the shared database.
+ */
+
 class Model {
   protected $db;
 
@@ -17,8 +23,6 @@ class Model {
     if(defined('CONFIG_DB_PORT')) {
       $this->port = CONFIG_DB_PORT;
     }
-
-    $this->connect();
   }
 
 

@@ -1,13 +1,13 @@
 <?php
-//ini_set('display_errors', 'off');
+ini_set('display_errors', 'off');
 
-//try {
+try {
   require __DIR__.'/./startup.php';
 
   $request = new \Request();
 
   /*
-  * apache mod_rewrite modifies requests to the api version folders to be redirected to this file
+  * apache mod_rewrite modifies urls that target API version folders to be redirected to this file
   * and to include the rest of the path as the route parameter
   */
 
@@ -22,11 +22,10 @@
 
   $response = $request->getResponse($route);
 
-/*} catch (\Exception | \ErrorException | \Error $e) {
+} catch (\Exception | \ErrorException | \Error $e) {
   $request = new \Request();
   $response = $request->getExceptionResponse();
-}*/
-
+}
 
 $response_formatter_factory = new \Factory\ResponseFormatterFactory();
 $response_formatter = $response_formatter_factory->create($request->getAcceptMimeType());
