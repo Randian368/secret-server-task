@@ -2,6 +2,11 @@
 namespace Factory;
 use \Helper\StringHelper as StringHelper;
 
+/**
+ * @purpose
+ * Determine which response formatter to use based on mime type
+ * and return a class instance that implements ResponseFormatterInterface.
+ */
 class ResponseFormatterFactory {
 
   public function create($accept_mime_type) {
@@ -38,6 +43,11 @@ class ResponseFormatterFactory {
   }
 
 
+  /** Returns the subtype part of a mime type string.
+   * @method getSubtype
+   * @param string $accept_mime_type                A valid value mime type string, e.g.: text/html
+   * @return bool|string                            False if no subtype found, otherwise the subtype, e.g.: html
+   */
   private function getSubtype($accept_mime_type) {
     if(preg_match('/[^;\r\n\s]+(?:\\\\|\/)([^;\r\n\s]+)(?:$|[;\r\n\s])/', $accept_mime_type, $subtype) && isset($subtype[1])) {
       return $subtype[1];
@@ -46,6 +56,13 @@ class ResponseFormatterFactory {
   }
 
 
+  /** Gets a ResponseFormatter's class name based on mime subtype. Class names should adhere to the following pattern:
+   * subtype name without special characters; first letter of each word uppercase, rest of the letters lowercase
+   * postfixed by 'ResponseFormatter'
+   * @method getFormatterClassName
+   * @param string $subtype                       The subtype part of a mime type string
+   * @return string
+   * */
   private function getFormatterClassName($subtype) {
     $formatter_class_name = '';
 

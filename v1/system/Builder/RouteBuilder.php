@@ -2,8 +2,18 @@
 namespace Builder;
 use \Helper\StringHelper as StringHelper;
 
-
+/**
+ * @purpose
+ * Responsible for finding the class and method that matches the url path and returning a Route instance with this information.
+ */
 class RouteBuilder {
+
+
+  /** Builds a route instance.
+   * @method build
+   * @param string $path             The path part of the request url. E.g.: secret/{hash}
+   * @return Route
+   */
   public function build(String $path) {
     if($config_route = $this->getConfigRoute($path)) {
       $path = $config_route;
@@ -24,6 +34,13 @@ class RouteBuilder {
     return $route;
   }
 
+
+  /** Attempts to find a class with the given namespace that matches the path part of the request url.
+   * @method buildPrefixedRoute
+   * @param string $path                The path part of the request url. E.g.: secret/{hash}
+   * @param string $type_prefix         The namespace to search within.
+   * @return Route|null
+   */
   private function buildPrefixedRoute(String $path, String $type_prefix) {
     $controller = '';
     $method = '';
@@ -78,6 +95,11 @@ class RouteBuilder {
   }
 
 
+  /** Checks if the url path has a specifically configurated responder class and method.
+   * @method getConfigRoute
+   * @param string $path                The path part of the request url. E.g.: secret/{hash}
+   * @return string                     The configured path based on which a responder class and method can be identified, or an empty string if no configuration exists for the supplied url path.
+   */
   private function getConfigRoute($path) {
     $result = '';
 
@@ -96,6 +118,12 @@ class RouteBuilder {
   }
 
 
+  /** Replaces capturing group references with their match.
+   * @method replaceCapturingGroups
+   * @param string $config_route                A route overwrite defined in config/routes.php that might contain regex backreferences.
+   * @param array $matches                      Array containing the matched values to use as replacements.
+   * @return string                             $config_route with backreferences replaced by their corresponding value.
+   */
   private function replaceCapturingGroups($config_route, $matches) {
     $replaced = $config_route;
     for($i = 1; $i < count($matches); $i++) {
@@ -105,12 +133,16 @@ class RouteBuilder {
   }
 
 
-
   private function isValidPath($path) {
     $path = str_replace('\\', '/', $path);
     return preg_match('/(?:[^\s\/]+\/){1,}?[^\s\/]+/', $path);
   }
 
+
+  /** Equivalent of dirname() but for url paths.
+   * @param string $path                The path part of the request url. E.g.: secret/{hash}
+   * @return string|null
+   */
   private function getLastPathLevel(String $path) {
     $path = str_replace('\\', '/', $path);
     if(preg_match('/\/([^\s\/]+)$/', $path, $matches) && isset($matches[1])) {
