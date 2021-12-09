@@ -23,6 +23,8 @@ class Model {
     if(defined('CONFIG_DB_PORT')) {
       $this->port = CONFIG_DB_PORT;
     }
+
+    $this->connect();
   }
 
 
