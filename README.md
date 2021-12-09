@@ -13,7 +13,13 @@
 
 **Extendability:** Additional response formats could be easily added without modifying existing code. All that would be needed for an additional response format is a new class that implements `ResponseFormatterInterface` and conforms to the specific classname format required by `ResponseFromatterFactory`.
 
-**Hosting**: This API is hosted at: http://api.secret-server.randian368.link/v1/
+**Hosting**: This API is hosted at: http://api.secret-server.randian368.link/v1/  
+As specified in swagger.yaml, the following endpoints have been implemented:
+- HTTP GET http://api.secret-server.randian368.link/v1/secret/{hash}
+- HTTP POST http://api.secret-server.randian368.link/v1/secret
+
+-Post
+http://api.secret-server.randian368.link/v1/secret
 
 **Code quality**: The codebase was written in Object Oriented style and uses PSR-0 autoloading with Composer. I would say it is about 6/10 adherent to clean code principles.
 
