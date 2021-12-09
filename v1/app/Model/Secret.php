@@ -91,7 +91,7 @@ class Secret extends \Model implements ModelInterface {
 
 
   private function subtractRemainingViews($hash) : int {
-    $update = "UPDATE `secret` SET `remainingViews` = (CAST(`remainingViews` AS INT) - 1) WHERE `hash` = '" . $this->db->escape($hash) . "'";
+    $update = "UPDATE `secret` SET `remainingViews` = (`remainingViews` - 1) WHERE `hash` = '" . $this->db->escape($hash) . "'";
     $this->db->query($update);
     return $this->db->countAffected();
   }
@@ -99,7 +99,7 @@ class Secret extends \Model implements ModelInterface {
 
   private function getFormattedDateTime($timestamp) {
     $date_time = new \DateTime();
-    $date_time->setTimestamp($timestamp);
+    $date_time->setTimestamp((int)$timestamp);
     $date_time->setTimezone(new \DateTimeZone('UTC'));
     return $date_time->format('Y-m-d\TH:i:s.v\Z'); // the specification showed Zulu time for display
   }
