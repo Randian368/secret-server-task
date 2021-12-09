@@ -45,7 +45,7 @@ class ResponseFormatterFactory {
 
   /** Returns the subtype part of a mime type string.
    * @method getSubtype
-   * @param string $accept_mime_type                A valid value mime type string, e.g.: text/html
+   * @param string $accept_mime_type                A valid mime type string value, e.g.: text/html
    * @return bool|string                            False if no subtype found, otherwise the subtype, e.g.: html
    */
   private function getSubtype($accept_mime_type) {
