@@ -18,9 +18,6 @@ As specified in swagger.yaml, the following endpoints have been implemented:
 - HTTP GET http://api.secret-server.randian368.link/v1/secret/{hash}
 - HTTP POST http://api.secret-server.randian368.link/v1/secret
 
--Post
-http://api.secret-server.randian368.link/v1/secret
-
 **Code quality**: The codebase was written in Object Oriented style and uses PSR-0 autoloading with Composer. I would say it is about 6/10 adherent to clean code principles.
 
 Most classes, and some of their less self-evident methods do have docblock-style comments explaining at least their purpose/responsibility.
