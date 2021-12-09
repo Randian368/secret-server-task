@@ -1,6 +1,9 @@
 <?php
+define('ENV', 'LOCAL');
+//define('TIMEZONE', 'Europe/Budapest');
+
 if(defined('ENV') && ENV == 'REMOTE') {
-  /* redacted live server information */
+  /* redacted live server data */
 } else {
   define('CONFIG_DB_HOSTNAME', 'localhost');
   define('CONFIG_DB_USERNAME', 'root');

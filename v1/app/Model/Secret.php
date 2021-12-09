@@ -10,7 +10,6 @@ class Secret extends \Model implements ModelInterface {
   private $cipher_algorithm = 'aes-128-cbc';
   private $passphrase = 'dW5zbGljZWQgcHVzaGNoYWlyIHNja';
   private $initialization_vector = '34e2b514acd2cbc2';
-  private $date_display_format = 'Y-m-d\TH:i:s.v\Z';
 
   public $hash = '';
   public $secretText = '';
@@ -53,8 +52,8 @@ class Secret extends \Model implements ModelInterface {
 
         $this->hash = $hash;
         $this->secretText = $this->decryptSecretText($result['secretText']);
-        $this->createdAt = date($this->date_display_format, (int)$result['createdAt']);
-        $this->expiresAt = date($this->date_display_format, (int)$result['expiresAt']);
+        $this->createdAt = $this->getFormattedDateTime($result['createdAt']);
+        $this->expiresAt = $this->getFormattedDateTime($result['expiresAt']);
         $this->remainingViews = $subtract_remaining_views ? (int)$result['remainingViews'] - 1 : (int)$result['remainingViews'];
       }
     }
@@ -95,6 +94,14 @@ class Secret extends \Model implements ModelInterface {
     $update = "UPDATE `secret` SET `remainingViews` = (CAST(`remainingViews` AS INT) - 1) WHERE `hash` = '" . $this->db->escape($hash) . "'";
     $this->db->query($update);
     return $this->db->countAffected();
+  }
+
+
+  private function getFormattedDateTime($timestamp) {
+    $date_time = new DateTime();
+    $date_time->setTimestamp($timestamp);
+    $date_time->setTimezone(new DateTimeZone('UTC'));
+    return $date_time->format('Y-m-d\TH:i:s.v\Z'); // the specification showed Zulu time for display
   }
 
 
