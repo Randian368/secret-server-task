@@ -25,8 +25,6 @@ class Response {
     $http_status_code = $this->getHttpStatusCode();
     http_response_code($http_status_code);
 
-    header('Cache-Control: no-cache, max-age=0');
-
     $http_headers = $this->getHttpHeaders();
     if(!empty($http_headers)) {
       foreach($http_headers as $name => $value) {
