@@ -11,7 +11,7 @@
 
 **API Response types:** The API can respond with XML or JSON data based on the Accept HTTP request header. The Accept header is supported in a case-insensitive manner in accordance with  RFC 2616.  
 
-**Extendability:** Additional response formats could be easily added without modifying existing code. All that would be needed for an additional response format is a new class that implements `ResponseFormatterInterface` and conforms to the specific classname structure required by `ResponseFromatterFactory`.
+**Extendability:** Additional response formats could be easily added without modifying existing code. All that would be needed for an additional response format is a new class that implements `ResponseFormatterInterface` and conforms to the specific classname format required by `ResponseFromatterFactory`.
 
 **Hosting**: This API is hosted at: http://api.secret-server.randian368.link/v1/
 
