@@ -98,9 +98,9 @@ class Secret extends \Model implements ModelInterface {
 
 
   private function getFormattedDateTime($timestamp) {
-    $date_time = new DateTime();
+    $date_time = new \DateTime();
     $date_time->setTimestamp($timestamp);
-    $date_time->setTimezone(new DateTimeZone('UTC'));
+    $date_time->setTimezone(new \DateTimeZone('UTC'));
     return $date_time->format('Y-m-d\TH:i:s.v\Z'); // the specification showed Zulu time for display
   }
 
