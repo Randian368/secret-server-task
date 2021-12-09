@@ -117,7 +117,7 @@ class Request {
   }
 
 
-  /** Sets the HTTP headers that the Response object should take into consideration when creating a Response
+  /** Sets the HTTP Request headers that should be taken into consideration when creating a Response, e.g the Accept header.
    *  @method setHttpHeaders
    *  @param array $http_headers       a set of HTTP header key-valuze pairs for this Request to consider when responsing, formatted like the return value of apache_request_headers()
    *  @return null
