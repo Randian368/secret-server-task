@@ -27,11 +27,13 @@ class SecretController  extends AbstractController {
     dump($secret);
     if(!$secret) {
       throw $this->createNotFoundException(
-          'No product found for id '.$hash
+          'No product found for id '. $hash
       );
-    } else {
-
     }
+
+    $response =  new Response('Hello '.$hash, Response::HTTP_OK);
+    return $response;
+
   }
 
 
