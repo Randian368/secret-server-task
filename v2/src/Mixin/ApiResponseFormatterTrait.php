@@ -19,7 +19,7 @@ trait ApiResponseFormatterTrait {
   ];
 
   /**
-   * The format the request will be responded to; based on the Accept request header.
+   * The format the request will be responded to with; based on the Accept request header.
    * @var string
    */
   private $response_format;
