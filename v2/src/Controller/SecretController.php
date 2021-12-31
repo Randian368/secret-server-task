@@ -2,9 +2,8 @@
 namespace App\Controller;
 
 use App\Entity\Secret;
+use App\Mixin\ApiResponseFormatterTrait;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\HttpFoundation\JsonResponse;
-// use Symfony\Component\HttpFoundation\XmlResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,8 +11,17 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/secret")
  */
-class SecretController  extends AbstractController {
-  private $doctrine; // i have np clue if this is how doctrine is used in controllers
+class SecretController extends AbstractController {
+  use ApiResponseFormatterTrait;
+
+  private $doctrine; // i have no clue if this is how doctrine is used in controllers
+
+  private $errors = [
+    '404001' => 'Secret not found',
+    '405001' => 'Invalid input',
+    '500001' => 'Secret couldn\'t be created due to an unexpected internal error'
+  ];
+
 
   public function __construct(ManagerRegistry $doctrine) {
     $this->doctrine = $doctrine;
@@ -24,16 +32,13 @@ class SecretController  extends AbstractController {
    */
   public function readSecret(string $hash): Response {
     $secret =  $this->getSecretByHash($hash);
-    dump($secret);
     if(!$secret) {
-      throw $this->createNotFoundException(
-          'No product found for id '. $hash
-      );
+      $response = $this->toResponse($this->errors['404001'], Response::HTTP_NOT_FOUND);
+    } else {
+      $response = $this->toResponse($secret);
     }
 
-    $response =  new Response('Hello '.$hash, Response::HTTP_OK);
     return $response;
-
   }
 
 
@@ -42,6 +47,8 @@ class SecretController  extends AbstractController {
    */
   public function createSecret(ValidatorInterface $validator): Response {
 
+
+    return $response;
   }
 
 
