@@ -77,13 +77,14 @@ trait ApiResponseFormatterTrait {
     foreach($accepted_content_types as $content_type) {
       $format = $this->request->getFormat($content_type);
 
+
       if($this->isSupportedFormat($format)) {
         $preferred_supported_format = $format;
         break;
       }
     }
 
-    return $this->getDefaultFormat();
+    return $preferred_supported_format ?: $this->getDefaultFormat();
   }
 
 
