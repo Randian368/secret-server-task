@@ -8,10 +8,20 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 trait ApiResponseFormatterTrait {
   private $serializer;
+
+  /**
+   * Key is the format type, value is a context array.
+   * @var array
+   */
   private $supported_formats = [
     'json' => [],
     'xml'  => []
   ];
+
+  /**
+   * The format the request will be responded to; based on the Accept request header.
+   * @var string
+   */
   private $preferred_supported_format;
 
 
@@ -42,6 +52,10 @@ trait ApiResponseFormatterTrait {
   }
 
 
+  /**
+   * @method getSupportedSerializer
+   * @return Serializer|void                 A Serializer object for formatting the response.
+   */
   private function getSupportedSerializer() : ?Serializer {
     $normalizers = $this->getNormalizers();
     $encoders = $this->getEncoders();
@@ -71,12 +85,10 @@ trait ApiResponseFormatterTrait {
 
   private function getPreferredSupportedFormat() : String {
     $preferred_supported_format;
-
     $accepted_content_types = $this->request->getAcceptableContentTypes();
 
     foreach($accepted_content_types as $content_type) {
       $format = $this->request->getFormat($content_type);
-
 
       if($this->isSupportedFormat($format)) {
         $preferred_supported_format = $format;
