@@ -31,12 +31,12 @@ trait ApiResponseFormatterTrait {
     $serializer_context = $this->supported_formats[$this->preferred_supported_format];
     $serialized_content = $serializer->serialize($content, $this->preferred_supported_format, $serializer_context);
 
-    $content_type = $this->request->getContentType($this->preferred_supported_format);
+    $content_type = $this->request->getMimeType($this->preferred_supported_format);
 
     $response = new Response();
     $response->setContent($serialized_content);
     $response->setStatusCode($http_status_code);
-    $response->headers->set('Content-type', $content_type);
+    $response->headers->set('Content-Type', $content_type);
 
     return $response;
   }
