@@ -22,7 +22,7 @@ trait ApiResponseFormatterTrait {
    * The format the request will be responded to; based on the Accept request header.
    * @var string
    */
-  private $preferred_supported_format;
+  private $response_format;
 
 
   /**
@@ -35,13 +35,13 @@ trait ApiResponseFormatterTrait {
   public function toResponse($content, $http_status_code = Response::HTTP_OK) : Response {
     $this->request = $this->container->get('request_stack')->getCurrentRequest();
 
-    $this->preferred_supported_format = $this->getPreferredSupportedFormat();
+    $this->response_format = $this->getPreferredSupportedFormat();
 
-    $serializer = $this->getSupportedSerializer($this->preferred_supported_format);
-    $serializer_context = $this->supported_formats[$this->preferred_supported_format];
-    $serialized_content = $serializer->serialize($content, $this->preferred_supported_format, $serializer_context);
+    $serializer = $this->getSupportedSerializer($this->response_format);
+    $serializer_context = $this->supported_formats[$this->response_format];
+    $serialized_content = $serializer->serialize($content, $this->response_format, $serializer_context);
 
-    $content_type = $this->request->getMimeType($this->preferred_supported_format);
+    $content_type = $this->request->getMimeType($this->response_format);
 
     $response = new Response();
     $response->setContent($serialized_content);
@@ -77,26 +77,26 @@ trait ApiResponseFormatterTrait {
 
 
   private function getEncoders() : array {
-    $format = $this->preferred_supported_format ?: $this->getPreferredSupportedFormat();
+    $format = $this->response_format ?: $this->getPreferredSupportedFormat();
     $encoder_class = "\\Symfony\\Component\\Serializer\\Encoder\\" . $this->ucFirstLcRest($format) . "Encoder";
     return [new $encoder_class()];
   }
 
 
   private function getPreferredSupportedFormat() : String {
-    $preferred_supported_format;
+    $response_format;
     $accepted_content_types = $this->request->getAcceptableContentTypes();
 
     foreach($accepted_content_types as $content_type) {
       $format = $this->request->getFormat($content_type);
 
       if($this->isSupportedFormat($format)) {
-        $preferred_supported_format = $format;
+        $response_format = $format;
         break;
       }
     }
 
-    return $preferred_supported_format ?: $this->getDefaultFormat();
+    return $response_format ?: $this->getDefaultFormat();
   }
 
 
