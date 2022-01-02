@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\SecretRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Ignore;
 
 /**
  * @ORM\Entity(repositoryClass=SecretRepository::class)
@@ -11,123 +12,138 @@ use Doctrine\ORM\Mapping as ORM;
 class Secret
 {
 
-    /**
-     * @ORM\Id()
-     * @ORM\Column(type="string", length=40)
-     */
-    private $hash;
+  private $cipher_algorithm = 'aes-128-cbc';
+  private $passphrase = 'dW5zbGljZWQgcHVzaGNoYWlyIHNja';
+  private $initialization_vector = '34e2b514acd2cbc2';
 
-    /**
-     * @ORM\Column(type="text", name="secretText")
-     */
-    private $secretText;
+  /**
+   * @ORM\Id()
+   * @ORM\Column(type="string", length=40)
+   */
+  private $hash;
 
-    /**
-     * @ORM\Column(type="integer", name="createdAt")
-     */
-    private $createdAt;
+  /**
+   * @ORM\Column(type="text", name="secretText")
+   */
+  private $secretText;
 
-    /**
-     * @ORM\Column(type="integer", name="expiresAt")
-     */
-    private $expiresAt;
+  /**
+   * @ORM\Column(type="integer", name="createdAt")
+   */
+  private $createdAt;
 
-    /**
-     * @ORM\Column(type="integer", name="expiresAfterMinutes")
-     */
-    private $expiresAfterMinutes;
+  /**
+   * @ORM\Column(type="integer", name="expiresAt")
+   */
+  private $expiresAt;
 
-    /**
-     * @ORM\Column(type="integer", name="expiresAfterViews")
-     */
-    private $expiresAfterViews;
+  /**
+   * @ORM\Column(type="integer", name="expiresAfterMinutes")
+   */
+  private $expiresAfterMinutes;
 
-    /**
-     * @ORM\Column(type="integer", name="remainingViews")
-     */
-    private $remainingViews;
+  /**
+   * @ORM\Column(type="integer", name="expiresAfterViews")
+   * Ignore()
+   */
+  private $expiresAfterViews;
 
-    public function getHash(): ?string
-    {
-        return $this->hash;
-    }
+  /**
+   * @ORM\Column(type="integer", name="remainingViews")
+   */
+  private $remainingViews;
 
-    public function setHash(string $hash): self
-    {
-        $this->hash = $hash;
+  public function getHash(): ?string
+  {
+      return $this->hash;
+  }
 
-        return $this;
-    }
+  public function setHash(string $hash): self
+  {
+      $this->hash = $hash;
 
-    public function getSecretText(): ?string
-    {
-        return $this->secretText;
-    }
+      return $this;
+  }
 
-    public function setSecretText(string $secretText): self
-    {
-        $this->secretText = $secretText;
+  public function getSecretText(): ?string
+  {
+      return $this->decryptSecretText($this->secretText);
+  }
 
-        return $this;
-    }
+  public function setSecretText(string $secretText): self
+  {
+      $this->secretText = $this->encryptSecretText($secretText);
 
-    public function getCreatedAt(): ?int
-    {
-        return $this->createdAt;
-    }
+      return $this;
+  }
 
-    public function setCreatedAt(int $createdAt): self
-    {
-        $this->createdAt = $createdAt;
+  public function getCreatedAt(): ?int
+  {
+      return $this->createdAt;
+  }
 
-        return $this;
-    }
+  public function setCreatedAt(int $createdAt): self
+  {
+      $this->createdAt = $createdAt;
 
-    public function getExpiresAt(): ?int
-    {
-        return $this->expiresAt;
-    }
+      return $this;
+  }
 
-    public function setExpiresAt(int $expiresAt): self
-    {
-        $this->expiresAt = $expiresAt;
+  public function getExpiresAt(): ?int
+  {
+      return $this->expiresAt;
+  }
 
-        return $this;
-    }
+  public function setExpiresAt(int $expiresAt): self
+  {
+      $this->expiresAt = $expiresAt;
 
-    public function getExpiresAfterMinutes(): ?int
-    {
-        return $this->expiresAfterMinutes;
-    }
+      return $this;
+  }
 
-    public function setExpiresAfterMinutes(int $expiresAfterMinutes): self
-    {
-        $this->expiresAfterMinutes = $expiresAfterMinutes;
+  public function getExpiresAfterMinutes(): ?int
+  {
+      return $this->expiresAfterMinutes;
+  }
 
-        return $this;
-    }
+  public function setExpiresAfterMinutes(int $expiresAfterMinutes): self
+  {
+      $this->expiresAfterMinutes = $expiresAfterMinutes;
 
-    public function getExpiresAfterViews(): ?int
-    {
-        return $this->expiresAfterViews;
-    }
+      return $this;
+  }
 
-    public function setExpiresAfterViews(int $expiresAfterViews): self
-    {
-        $this->expiresAfterViews = $expiresAfterViews;
+  public function getExpiresAfterViews(): ?int
+  {
+      return $this->expiresAfterViews;
+  }
 
-        return $this;
-    }
+  public function setExpiresAfterViews(int $expiresAfterViews): self
+  {
+      $this->expiresAfterViews = $expiresAfterViews;
 
-    public function getRemainingViews(): ?int
-    {
-        return $this->remainingViews;
-    }
+      return $this;
+  }
 
-    public function setRemainingViews(int $remainingViews): self
-    {
-        $this->remainingViews = $remainingViews;
+  public function getRemainingViews(): ?int
+  {
+      return $this->remainingViews;
+  }
 
-        return $this;
-    }
+  public function setRemainingViews(int $remainingViews): self
+  {
+      $this->remainingViews = $remainingViews;
+
+      return $this;
+  }
+
+
+  private function enryptSecretText($secret_text) : string {
+    return openssl_encrypt($secret_text, $this->cipher_algorithm, $this->passphrase, 0, $this->initialization_vector);
+  }
+
+
+  private function decryptSecretText($encrypted_secret_text) : string {
+    return openssl_decrypt($encrypted_secret_text, $this->cipher_algorithm, $this->passphrase, 0, $this->initialization_vector);
+  }
 }

@@ -32,10 +32,17 @@ class SecretController extends AbstractController {
    */
   public function readSecret(string $hash): Response {
     $secret =  $this->getSecretByHash($hash);
-    if(!$secret) {
+    if($secret) {
+      if(($remaining_views = $secret->getRemainingViews()) >= 1) {
+        $secret->setRemainingViews($remaining_views - 1);
+        $this->doctrine->getManager()->flush();
+
+        $response = $this->toResponse($secret);
+      }
+    }
+
+    if(!isset($response)) {
       $response = $this->toResponse($this->errors['404001'], Response::HTTP_NOT_FOUND);
-    } else {
-      $response = $this->toResponse($secret);
     }
 
     return $response;
