@@ -12,8 +12,19 @@ use Symfony\Component\Serializer\Annotation\Ignore;
 class Secret
 {
 
+  /**
+   * @Ignore()
+   */
   private $cipher_algorithm = 'aes-128-cbc';
+
+  /**
+   * @Ignore()
+   */
   private $passphrase = 'dW5zbGljZWQgcHVzaGNoYWlyIHNja';
+
+  /**
+   * @Ignore()
+   */
   private $initialization_vector = '34e2b514acd2cbc2';
 
   /**
@@ -39,12 +50,13 @@ class Secret
 
   /**
    * @ORM\Column(type="integer", name="expiresAfterMinutes")
+   * @Ignore()
    */
   private $expiresAfterMinutes;
 
   /**
    * @ORM\Column(type="integer", name="expiresAfterViews")
-   * Ignore()
+   * @Ignore()
    */
   private $expiresAfterViews;
 

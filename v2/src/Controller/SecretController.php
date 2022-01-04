@@ -63,4 +63,12 @@ class SecretController extends AbstractController {
     return $this->doctrine->getRepository('App:Secret')->find($hash);
   }
 
+
+  private function getFormattedDateTime($timestamp) {
+    $date_time = new \DateTime();
+    $date_time->setTimestamp((int)$timestamp);
+    $date_time->setTimezone(new \DateTimeZone('UTC'));
+    return $date_time->format('Y-m-d\TH:i:s.v\Z'); // the specification showed Zulu time for display
+  }
+
 }

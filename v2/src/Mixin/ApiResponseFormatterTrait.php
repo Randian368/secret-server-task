@@ -4,6 +4,9 @@ namespace App\Mixin;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
+use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
+use Doctrine\Common\Annotations\AnnotationReader;
 
 
 trait ApiResponseFormatterTrait {
@@ -19,7 +22,7 @@ trait ApiResponseFormatterTrait {
   ];
 
   /**
-   * The format the request will be responded to with; based on the Accept request header.
+   * The format the request will be responded to; based on the Accept request header.
    * @var string
    */
   private $response_format;
@@ -37,8 +40,10 @@ trait ApiResponseFormatterTrait {
 
     $this->response_format = $this->getPreferredSupportedFormat();
 
-    $serializer = $this->getSupportedSerializer($this->response_format);
+    $serializer = $this->getSupportedSerializer($content);
     $serializer_context = $this->supported_formats[$this->response_format];
+
+    //$normalized_content = $serializer->normalize($content, null, [AbstractNormalizer::ATTRIBUTES => $included_fields]);
     $serialized_content = $serializer->serialize($content, $this->response_format, $serializer_context);
 
     $content_type = $this->request->getMimeType($this->response_format);
@@ -56,14 +61,14 @@ trait ApiResponseFormatterTrait {
    * @method getSupportedSerializer
    * @return Serializer|void                 A Serializer object for formatting the response.
    */
-  private function getSupportedSerializer() : ?Serializer {
-    $normalizers = $this->getNormalizers();
-    $encoders = $this->getEncoders();
+  private function getSupportedSerializer($content) : ?Serializer {
+    $normalizers = $this->getNormalizers($content);
+    $encoders = $this->getEncoders($content);
 
     if(!empty($normalizers) && !empty($encoders)) {
       $serializer = new Serializer(
-        $this->getNormalizers(),
-        $this->getEncoders()
+        $normalizers,
+        $encoders
       );
 
       return $serializer;
@@ -71,12 +76,21 @@ trait ApiResponseFormatterTrait {
   }
 
 
-  private function getNormalizers() {
-    return [new ObjectNormalizer()];
+  private function getNormalizers($data = null) {
+    if(isset($data) && is_object($data)) {
+      $reflection = new \ReflectionClass($data);
+      $specific_normalizer = 'App\\Normalizer\\' . $reflection->getShortName() . 'Normalizer';
+
+      if(class_exists($specific_normalizer)) {
+        return [new $specific_normalizer()];
+      }
+    }
+
+    return [new ObjectNormalizer(new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader())))];
   }
 
 
-  private function getEncoders() : array {
+  private function getEncoders($data = null) : array {
     $format = $this->response_format ?: $this->getPreferredSupportedFormat();
     $encoder_class = "\\Symfony\\Component\\Serializer\\Encoder\\" . $this->ucFirstLcRest($format) . "Encoder";
     return [new $encoder_class()];
