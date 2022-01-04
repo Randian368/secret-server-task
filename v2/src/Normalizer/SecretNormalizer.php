@@ -34,7 +34,7 @@ class SecretNormalizer implements ContextAwareNormalizerInterface, CacheableSupp
 
 
   public function hasCacheableSupportsMethod() : bool {
-    return true;
+    return __CLASS__ === static::class;
   }
 
 

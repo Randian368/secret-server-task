@@ -19,7 +19,8 @@ class SecretController extends AbstractController {
   private $errors = [
     '404001' => 'Secret not found',
     '405001' => 'Invalid input',
-    '500001' => 'Secret couldn\'t be created due to an unexpected internal error'
+    '500001' => 'Unexpected internal error',
+    '500002' => 'Secret couldn\'t be created due to an unexpected internal error'
   ];
 
 
@@ -34,10 +35,16 @@ class SecretController extends AbstractController {
     $secret =  $this->getSecretByHash($hash);
     if($secret) {
       if(($remaining_views = $secret->getRemainingViews()) >= 1) {
-        $secret->setRemainingViews($remaining_views - 1);
-        $this->doctrine->getManager()->flush();
 
-        $response = $this->toResponse($secret);
+        try {
+          $secret->setRemainingViews($remaining_views - 1);
+          $response = $this->toResponse($secret);
+
+          $this->doctrine->getManager()->flush();
+        } catch(\Exception $e) {
+          $error_message = $this->errors['500001'] . ' ' . $e->getMessage();
+          $response = $this->toResponse($error_message, 500);
+        }
       }
     }
 

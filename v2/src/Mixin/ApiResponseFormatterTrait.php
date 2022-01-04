@@ -73,6 +73,8 @@ trait ApiResponseFormatterTrait {
 
       return $serializer;
     }
+
+    throw new \Exception('No supported normalizer or encoder for content.');
   }
 
 
