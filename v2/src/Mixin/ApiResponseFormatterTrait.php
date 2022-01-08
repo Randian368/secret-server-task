@@ -74,11 +74,13 @@ trait ApiResponseFormatterTrait {
       return $serializer;
     }
 
-    throw new \Exception('No supported normalizer or encoder for content.');
+    throw new \Exception('No supported normalizer or encoder for content.', );
   }
 
 
   private function getNormalizers($data = null) {
+    //return [];
+
     if(isset($data) && is_object($data)) {
       $reflection = new \ReflectionClass($data);
       $specific_normalizer = 'App\\Normalizer\\' . $reflection->getShortName() . 'Normalizer';

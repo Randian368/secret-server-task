@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\SecretRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Ignore;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=SecretRepository::class)
@@ -30,51 +31,83 @@ class Secret
   /**
    * @ORM\Id()
    * @ORM\Column(type="string", length=40)
+   * @Assert\NotBlank()
+   * @Assert\Type("string")
    */
   private $hash;
 
   /**
    * @ORM\Column(type="text", name="secretText")
+   * @Assert\NotBlank()
+   * @Assert\Type("string")
    */
   private $secretText;
 
   /**
    * @ORM\Column(type="integer", name="createdAt")
+   * @Assert\NotBlank()
+   * @Assert\Type("int")
    */
   private $createdAt;
 
   /**
    * @ORM\Column(type="integer", name="expiresAt")
+   * @Assert\NotBlank()
+   * @Assert\Type("int")
    */
   private $expiresAt;
 
   /**
    * @ORM\Column(type="integer", name="expiresAfterMinutes")
+   * @Assert\NotBlank()
+   * @Assert\Type("int")
    * @Ignore()
    */
   private $expiresAfterMinutes;
 
   /**
    * @ORM\Column(type="integer", name="expiresAfterViews")
+   * @Assert\NotBlank()
+   * @Assert\Type("int")
    * @Ignore()
    */
   private $expiresAfterViews;
 
   /**
    * @ORM\Column(type="integer", name="remainingViews")
+   * @Assert\NotBlank()
+   * @Assert\Type("int")
    */
   private $remainingViews;
+
+
+  public function __construct(array $data) {
+    if(!empty($data)) {
+      $this->setHash();
+      $this->setSecretText($data['secret']);
+      $this->setCreatedAt(time());
+      $this->setExpiresAt(
+        $this->getExpireTime($this->createdAt, $data['expireAfter'])
+      );
+      $this->setExpiresAfterMinutes($data['expireAfter']);
+      $this->setExpiresAfterViews($data['expireAfterViews']);
+      $this->setRemainingViews((int)$data['expireAfterViews']);
+    }
+  }
+
 
   public function getHash(): ?string
   {
       return $this->hash;
   }
 
-  public function setHash(string $hash): self
-  {
-      $this->hash = $hash;
+  public function setHash(string $hash = ''): self {
+    if(!$hash) {
+      $hash = $this->createHashString();
+    }
+    $this->hash = $hash;
 
-      return $this;
+    return $this;
   }
 
   public function getSecretText(): ?string
@@ -149,13 +182,25 @@ class Secret
       return $this;
   }
 
-
-  private function enryptSecretText($secret_text) : string {
+  private function encryptSecretText($secret_text) : string {
     return openssl_encrypt($secret_text, $this->cipher_algorithm, $this->passphrase, 0, $this->initialization_vector);
   }
 
 
   private function decryptSecretText($encrypted_secret_text) : string {
     return openssl_decrypt($encrypted_secret_text, $this->cipher_algorithm, $this->passphrase, 0, $this->initialization_vector);
+  }
+
+
+  private function createHashString() : string {
+    return bin2hex(random_bytes(20));
+  }
+
+
+  /**
+   * @Ignore()
+   */
+  private function getExpireTime($created_at, $expires_after_minutes) : int {
+    return $created_at + ($expires_after_minutes * 60);
   }
 }
