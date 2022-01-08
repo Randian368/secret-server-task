@@ -39,7 +39,7 @@ class SecretController extends AbstractController {
     $secret =  $this->getSecretByHash($hash);
 
     if($secret) {
-      if(($remaining_views = $secret->getRemainingViews()) >= 1) {
+      if(($remaining_views = $secret->getRemainingViews()) >= 1 && !$this->isExpired($secret)) {
         $secret->setRemainingViews($remaining_views - 1);
 
         try {
@@ -74,10 +74,9 @@ class SecretController extends AbstractController {
         $this->doctrine->getManager()->flush();
 
         $response = $this->readSecret($secret->getHash());
-      }
-      else {
+      } else {
        $response = $this->toResponse($this->errors['405001'], 405);
-     }
+      }
     } else {
       $response = $this->toResponse($this->errors['405001'], 405);
     }
@@ -91,7 +90,7 @@ class SecretController extends AbstractController {
   }
 
 
-  private function getFormattedDateTime($timestamp) {
+  private function getFormattedDateTime($timestamp) : string {
     $date_time = new \DateTime();
     $date_time->setTimestamp((int)$timestamp);
     $date_time->setTimezone(new \DateTimeZone('UTC'));
@@ -99,7 +98,7 @@ class SecretController extends AbstractController {
   }
 
 
-  private function hasRequiredFields($post) {
+  private function hasRequiredFields($post) : bool {
     $required_post_fields = [
       'secret',
       'expireAfterViews',
@@ -112,6 +111,11 @@ class SecretController extends AbstractController {
       }
     }
     return true;
+  }
+
+
+  private function isExpired($secret) : bool {
+    return (bool)(time() > $secret->getExpiresAt());
   }
 
 }
