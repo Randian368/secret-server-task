@@ -12,6 +12,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 
 class SecretController extends AbstractController {
   use ApiResponseFormatterTrait;
@@ -34,7 +38,7 @@ class SecretController extends AbstractController {
   * @Route("/", name="homepage")
   */
   public function showUI() {
-    return $this->render('ui.html.twig', []);
+    return $this->render('ui.html.twig', ['hi' => 'HI']);
   }
 
 

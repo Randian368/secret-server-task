@@ -11,14 +11,19 @@ import './styles/app.css';
 // start the Stimulus application
 import './bootstrap';
 
-
 import Vue from 'vue';
+console.log(Vue);
 
 import SecretFormSwitcher from "./components/secret/FormSwitcher.vue";
 
 new Vue({
   el: '#app',
-  components: { SecretFormSwitcher }
+  components: { SecretFormSwitcher },
+  data() {
+    return {};
+  }
+});
+
 });
 
 //new Vue(App).$mount('#app');

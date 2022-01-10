@@ -1,11 +1,16 @@
 <template>
-  <div class="secret-form"><p>yyy</p></div>
+  <div class="secret-form-switcher">
+  </div>
 </template>
 
 <script>
+import GetForm from "./form/GetForm.vue";
+import PostForm from "./form/PostForm.vue";
+
+
 export default {
   name: "SecretFormSwitcher",
-  components: {},
+  components: {GetForm, PostForm},
   data() {
     return {};
   }
