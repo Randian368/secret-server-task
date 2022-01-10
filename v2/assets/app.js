@@ -13,3 +13,12 @@ import './bootstrap';
 
 
 import Vue from 'vue';
+
+//import SearchBar from "./components/secret/Form.vue";
+
+new Vue({
+  el: '#app',
+  components: { }
+});
+
+//new Vue(App).$mount('#app');

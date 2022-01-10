@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Vue UI {% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+  #app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+
+  #center {
+    width: 60%;
+    max-width:600px;
+    height: 40%;
+    max-height: 500px;
+    background-color: white;
+    margin:0 auto;
+  }
+
+  .box {
+    border-radius: 4px;
+    box-shadow: 2px 1px 4px hsl(0deg 0% 72%);
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+  <div id="app">
+    <div id="center" class="box">
+    </div>
+  </div>
+
+{% endblock %}

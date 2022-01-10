@@ -12,9 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-/**
- * @Route("/secret")
- */
+
 class SecretController extends AbstractController {
   use ApiResponseFormatterTrait;
 
@@ -33,7 +31,15 @@ class SecretController extends AbstractController {
   }
 
   /**
-   * @Route("/{hash}", name="secret_get", methods={"GET"})
+  * @Route("/", name="homepage")
+  */
+  public function showUI() {
+    return $this->render('ui.html.twig', []);
+  }
+
+
+  /**
+   * @Route("/secret/{hash}", name="secret_get", methods={"GET"})
    */
   public function readSecret(string $hash): Response {
     $secret =  $this->getSecretByHash($hash);
@@ -62,7 +68,7 @@ class SecretController extends AbstractController {
 
 
   /**
-   * @Route(name="secret_post", methods={"POST"})
+   * @Route("/secret", name="secret_post", methods={"POST"})
    */
   public function createSecret(Request $request, ValidatorInterface $validator): Response {
     $post = $request->request->all();
