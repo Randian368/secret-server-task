@@ -14,11 +14,11 @@ import './bootstrap';
 
 import Vue from 'vue';
 
-//import SearchBar from "./components/secret/Form.vue";
+import SecretFormSwitcher from "./components/secret/FormSwitcher.vue";
 
 new Vue({
   el: '#app',
-  components: { }
+  components: { SecretFormSwitcher }
 });
 
 //new Vue(App).$mount('#app');
