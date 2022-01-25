@@ -12,18 +12,16 @@ import './styles/app.css';
 import './bootstrap';
 
 import Vue from 'vue';
-console.log(Vue);
-
-import SecretFormSwitcher from "./components/secret/FormSwitcher.vue";
+import FormManager from "./components/secret/FormManager.vue";
 
 new Vue({
   el: '#app',
-  components: { SecretFormSwitcher },
+  components: { FormManager },
   data() {
     return {};
-  }
+  },
+  props: [ 'getAction' ]
 });
 
-});
 
 //new Vue(App).$mount('#app');

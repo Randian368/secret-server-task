@@ -11,10 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 
 class SecretController extends AbstractController {
@@ -38,7 +35,11 @@ class SecretController extends AbstractController {
   * @Route("/", name="homepage")
   */
   public function showUI() {
-    return $this->render('ui.html.twig', ['hi' => 'HI']);
+    $data = [
+      'get_route' =>  $this->generateUrl('secret_get', ['hash' => 'hash'], UrlGeneratorInterface::ABSOLUTE_URL),
+      'post_route' => $this->generateUrl('secret_post', [], UrlGeneratorInterface::ABSOLUTE_URL)
+    ];
+    return $this->render('ui.html.twig', $data);
   }
 
 

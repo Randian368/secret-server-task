@@ -102,7 +102,7 @@ trait ApiResponseFormatterTrait {
 
 
   private function getPreferredSupportedFormat() : String {
-    $response_format;
+    $response_format = '';
     $accepted_content_types = $this->request->getAcceptableContentTypes();
 
     foreach($accepted_content_types as $content_type) {
