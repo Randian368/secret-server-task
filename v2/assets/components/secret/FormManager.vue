@@ -6,7 +6,12 @@
         <option value="text/xml">XML</option>
       </select>
     </div>
-    <get-form v-bind:route="getRoute"></get-form>
+    <select v-model="selectedMethod">
+      <option value="GET">GET</option>
+      <option value="POST">POST</option>
+    </select>
+    <get-form v-bind:route="getRoute" v-if="selectedMethod === 'GET'"></get-form>
+    <post-form v-bind:route="postRoute" v-if="selectedMethod === 'POST'"></post-form>
   </div>
 </template>
 
@@ -23,10 +28,12 @@
     data() {
       return {
         responseType: 'application/json',
+        selectedMethod: 'GET'
       };
     },
     props: [
       "getRoute",
+      "postRoute"
     ],
     methods: {
       sendHTTPRequest(event) {
@@ -34,18 +41,18 @@
 
         let form = event.target;
 
-        let method = form.method;
         let url = form.action;
         let responseType = this.responseType;
+        let requestMethod = this.selectedMethod;
 
         return new Promise(function(resolve, reject) {
           let request = new XMLHttpRequest();
-          request.open(method, url);
+          request.open(requestMethod, url);
           request.onload = function() {
             resolve(request.response);
           }
           request.setRequestHeader('Accept', responseType);
-          request.send();
+          request.send(new FormData(form));
         });
       },
 
@@ -54,8 +61,7 @@
           this.$emit('api-response', response);
         });
       }
-
-    }
+    },
   }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
-  <form class="get-form" v-bind:action="formAction" v-on:submit="this.$parent.showApiResponse" method="get">
-    <input type="text" v-model="hash"></input>
+  <form class="get-form" v-bind:action="formAction" v-on:submit="this.$parent.showApiResponse">
+    <input type="text" v-model="hash" placeholder="hash"></input>
     <button type="submit">Get</button>
   </form>
 </template>

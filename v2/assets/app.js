@@ -21,7 +21,7 @@ new Vue({
   data() {
     return {response: ''};
   },
-  props: [ 'getAction' ],
+  props: [ 'getAction', 'postAction' ],
   methods: {
     displayResponse(response) {
       this.response = response;
