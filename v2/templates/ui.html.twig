@@ -5,25 +5,31 @@
 {% block stylesheets %}
 {{ parent() }}
 <style>
-  #container {
-    width: 100vw;
-    height: 100vh;
+  #app {
     display: flex;
     align-items: center;
   }
 
-  #app {
-    width: 60%;
-    max-width:600px;
-    height: 40%;
-    max-height: 500px;
-    background-color: white;
-    margin:0 auto;
+  #center-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .box {
+    width: calc(50% - 14px);
+    max-width:400px;
+    height: 40%;
+    max-height: 500px;
+    background-color: white;
     border-radius: 4px;
     box-shadow: 2px 1px 4px hsl(0deg 0% 72%);
+  }
+
+  .box:first-child {
+    margin: 0px 14px;
   }
 </style>
 {% endblock %}
@@ -31,9 +37,14 @@
 
 
 {% block body %}
-  <div id="container">
-    <div id="app" class="box">
-      <secret-form-switcher></secret-form-switcher>
+    <div id="app">
+      <div id="center-container">
+        <div class="box">
+          <form-manager get-route="{{ get_route }}" v-on:api-response="displayResponse"></form-manager>
+        </div>
+        <div class="box">
+          ${ response }
+        </div>
     </div>
   </div>
 

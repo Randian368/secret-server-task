@@ -12,16 +12,22 @@ import './styles/app.css';
 import './bootstrap';
 
 import Vue from 'vue';
+
 import FormManager from "./components/secret/FormManager.vue";
 
 new Vue({
   el: '#app',
   components: { FormManager },
   data() {
-    return {};
+    return {response: ''};
   },
-  props: [ 'getAction' ]
+  props: [ 'getAction' ],
+  methods: {
+    displayResponse(response) {
+      this.response = response;
+    }
+  },
+  delimiters: ['${','}']
 });
-
 
 //new Vue(App).$mount('#app');

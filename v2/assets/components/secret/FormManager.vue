@@ -7,7 +7,6 @@
       </select>
     </div>
     <get-form v-bind:route="getRoute"></get-form>
-    <div class="response"></div>
   </div>
 </template>
 
@@ -23,7 +22,7 @@
     },
     data() {
       return {
-        responseType: 'application/json'
+        responseType: 'application/json',
       };
     },
     props: [
@@ -52,7 +51,7 @@
 
       showApiResponse(event) {
         this.sendHTTPRequest(event).then((response) => {
-          console.log(response);
+          this.$emit('api-response', response);
         });
       }
 
